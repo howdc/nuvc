@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://howdc.github.io/nuvc/sitemap.xml
