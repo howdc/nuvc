@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="../../text/css1/common.css" type="text/css" />
+
+<script type="text/javascript"><!--
+function myGo(){
+     mySelect = document.myForm.myMenu.selectedIndex;
+     location.href = document.myForm.myMenu.options[mySelect].value;
+}
+// --></script>
+
+<script type="text/javascript" src="../../text/js/jquery.js"></script>
+<script type="text/javascript" src="../../text/js/common.js"></script>
+<script src="../../js/function.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../text/js/dropdownmenu.js"></script>
+<title>NUVC (Nagoya University Volleyball Club)</title>
+</head>
+<body>
+<div id="top">
+	<div id="header">
+		<h1><a href="../index.html">SAMPLE TEMPLATE</a></h1>
+		<div class="pr"><img src="../images/banner_pr_top.gif" alt="" /></div>
+	</div><!-- header end -->
+	<div id="menu">
+	<ul id="nav"><font size=3>
+	<li><a href="../result/index.html">試合結果</a></li>
+	<li><a href="../member/index.html">部員紹介</a>
+		<ul>
+			<li><a href="../member/index.html#men">男子部</a></li>
+			<li><a href="../member/index.html#women">女子部</a></li>
+		</ul>
+	<div class="clear"></div>
+	</li>
+	<li><a href="../plan/index.html">活動計画</a>
+		<ul>
+			<li><a href="../plan/index.html#men">男子部</a></li>
+			<li><a href="../plan/index.html#women">女子部</a></li>
+		</ul>
+		<div class="clear"></div>
+	</li>
+	<li><a href="../gallery/index.html">ギャラリー</a></li>
+	<li><a href="../other/index.html">その他</a>
+		<ul>
+			<li><a href="../shinkan/index.html">女子新刊ページ</a></li>
+			<li><a href="../history/index.html">更新履歴</a></li>
+			<li><a href="../obogteam/index.html">OB・OGﾁｰﾑ情報</a></li>
+		</ul>
+	<div class="clear"></div>
+	<li><a href="../link/index.html">リンク集</a>
+		<ul>
+			<li><a href="http://nuvc.bbs.fc2.com/">掲示板</a></li>
+			<li><a href="http://twitter.com/NagoyaVC">twitter</a></li>
+			<li><a href="http://www.facebook.com/pages/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%A4%A7%E5%AD%A6%E3%83%90%E3%83%AC%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB%E9%83%A8/247835471945504">facebook</a></li>
+		</ul>
+		<div class="clear"></div>
+	</ul>
+	</font>
+	</div><!-- menu end -->
+	<div id="contents">
+	<div id="main">
+	<!-- menu start -->
+	<form><select onChange="top.location.href=value">
+		<option value="#">年度を選択してください
+		<option value="../men.html">男子部戦績一覧
+		<option value="../women.html">女子部戦績一覧
+		<option value="../2014/index.html">2014年度
+		<option value="../2013/result2013.html">2013年度
+		<option value="../2012/result2012.html">2012年度
+		<option value="../2011/result2011.html">2011年度
+		<option value="../2010/result2010.html">2010年度
+		<option value="../2009/result2009.html">2009年度
+		<option value="../2008/result2008.html">2008年度
+		<option value="../2007/result2007.html">2007年度
+		<option value="../2006/result2006.html">2006年度
+		<option value="../2005/result2005.html">2005年度
+		<option value="../2004/result2004.html">2004年度
+		<option value="../2003/result2003.html">2003年度
+		<option value="../2002/result2002.html">2002年度
+		<option value="../2001/result2001.html">2001年度
+		<option value="../2000/result2000.html">2000年度
+		<option value="../1999/result1999.html">1999年度
+		<option value="../1998/result1998.html">1998年度
+		<option value="../1997/result1997.html">1997年度
+		<option value="../1996/result1996.html">1996年度
+		<option value="../1995/result1995.html">1995年度
+		<option value="../1994/result1994.html">1994年度
+		<option value="../1993/result1993.html">1993年度
+		<option value="../1992/result1992.html">1992年度
+		<option value="../1991/result1991.html">1991年度
+		<option value="../1990/result1990.html">1990年度
+		<option value="../1989/result1989.html">1989年度
+	</select>
+	<select onChange="top.location.href=value">
+		<option value="#">試合を選択してください
+		<option value="spring.html">春季東海リーグ
+		<option value="spring_ken.html">春季県リーグ
+		<option value="inkare.html">東海インカレ
+		<option value="meihan.html">名阪戦
+		<option value="tokoku.html">東国体
+		<option value="autumn.html">秋季東海リーグ
+		<option value="autumn_pref.html">秋季県リーグ
+	</select>
+	</form><br /><!-- menu end -->
+	
+	
+	</div><!-- main end -->
+	</div><!-- contents end -->
+	<div id="pageTop">
+		<a href="#top">ページのトップへ戻る</a>
+	</div><!-- pageTop end -->
+</div><!-- top end -->
+</body>
+</html>

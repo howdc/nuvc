@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2021年度 七大戦 — 名古屋大学バレーボール部 NUVC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1a3d2b;
+    --green-main:   #2d6a4f;
+    --green-mid:    #40916c;
+    --green-light:  #74c69d;
+    --green-pale:   #e8f5ec;
+    --burgundy:     #5c2a2a;
+    --burgundy-mid: #7a3838;
+    --burgundy-pale:#f0e6e6;
+    --white:        #ffffff;
+    --off-white:    #f8f8f6;
+    --text-dark:    #0f2318;
+    --text-mid:     #3a4a3f;
+    --text-light:   #6b7d72;
+    --border:       #d0ddd5;
+    --shadow-sm:    0 2px 10px rgba(26,61,43,0.10);
+    --shadow:       0 4px 24px rgba(26,61,43,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--off-white); color: var(--text-dark); font-size: 15px; line-height: 1.8; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  header { background: var(--green-dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; gap: 16px; }
+  .header-shortcuts { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .hdr-btn { display: inline-block; padding: 6px 14px; border-radius: 3px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.18s, transform 0.18s; }
+  .hdr-btn:hover { transform: translateY(-1px); }
+  .hdr-btn-primary { background: var(--burgundy); color: var(--white); border: 1px solid var(--burgundy-mid); }
+  .hdr-btn-primary:hover { background: var(--burgundy-mid); }
+  .hdr-btn-outline { background: transparent; color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.28); }
+  .hdr-btn-outline:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+  .logo { display: flex; align-items: center; gap: 14px; color: var(--white); }
+  .logo-nu-icon { width: 50px; height: 50px; opacity: 0.92; filter: brightness(0) invert(1); transition: transform 0.3s ease, filter 0.3s ease; }
+  .logo:hover .logo-nu-icon { transform: rotate(-6deg) scale(1.08); filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(116,198,157,0.5)); }
+  .logo-title-jp { font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,0.88); letter-spacing: 0.06em; }
+  .identity-stripe { background: var(--burgundy); display: flex; align-items: stretch; justify-content: center; flex-wrap: nowrap; }
+  .stripe-nav-btn { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.88); font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; letter-spacing: 0.04em; border-right: 1px solid rgba(255,255,255,0.1); transition: background 0.18s, color 0.18s; white-space: nowrap; flex: 1; min-width: 0; flex-direction: column; gap: 2px; padding: clamp(8px, 1.2vw, 10px) clamp(6px, 1.5vw, 20px); }
+  .stripe-nav-btn:last-child { border-right: none; }
+  .stripe-nav-btn:hover, .stripe-nav-btn.active { background: var(--burgundy-mid); color: var(--white); }
+  .stripe-nav-btn .stripe-en { font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.48rem, 1vw, 0.65rem); letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+  .stripe-nav-btn .stripe-jp { font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; color: rgba(255,255,255,0.92); }
+  .page-hero { background: linear-gradient(155deg, var(--green-dark) 0%, #1e4532 55%, var(--green-main) 100%); padding: 52px 24px 44px; text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(-48deg, transparent 0px, transparent 34px, rgba(255,255,255,0.014) 34px, rgba(255,255,255,0.014) 36px); }
+  .page-hero-content { position: relative; z-index: 2; }
+  .page-hero-title-jp { font-family: 'Noto Sans JP', sans-serif; font-size: clamp(1.6rem, 5vw, 2.8rem); font-weight: 900; color: var(--white); letter-spacing: 0.1em; text-shadow: 2px 2px 0 rgba(0,0,0,0.35); margin-bottom: 4px; }
+  .page-hero-subtitle { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.42); margin-bottom: 8px; }
+  .breadcrumb { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,0.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { margin: 0 6px; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 48px 24px 64px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-light); margin-bottom: 24px; padding: 8px 16px; border: 1.5px solid var(--border); border-radius: 4px; transition: border-color 0.18s, color 0.18s; }
+  .back-link:hover { border-color: var(--green-mid); color: var(--green-dark); }
+  /* Result tabs */
+  .result-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+  .result-tab { display: inline-block; padding: 8px 18px; border-radius: 4px; font-size: 0.82rem; font-weight: 700; background: var(--white); border: 1.5px solid var(--border); color: var(--text-mid); transition: background 0.18s, border-color 0.18s, color 0.18s; box-shadow: var(--shadow-sm); }
+  .result-tab:hover { background: var(--green-pale); border-color: var(--green-mid); }
+  .result-tab.active { background: var(--green-dark); border-color: var(--green-dark); color: var(--white); }
+  /* Content styles */
+  .content-body h2 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 900; color: var(--green-dark); margin: 36px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--border); position: relative; }
+  .content-body h2::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 40px; height: 2px; background: var(--green-mid); }
+  .content-body h3 { font-size: 1.1rem; font-weight: 800; color: var(--green-dark); margin: 28px 0 12px; display: flex; align-items: center; gap: 10px; }
+  .content-body h3::before { content: ''; display: block; width: 4px; height: 1.1em; background: var(--green-mid); border-radius: 2px; flex-shrink: 0; }
+  .content-body h3.women-heading { color: var(--burgundy); }
+  .content-body h3.women-heading::before { background: var(--burgundy-mid); }
+  .content-body p.league-name { font-size: 0.8rem; color: var(--text-light); margin: -8px 0 12px; }
+  /* Table styles */
+  .table-wrap { overflow-x: auto; border-radius: 8px; box-shadow: var(--shadow); background: var(--white); margin-bottom: 32px; }
+  table.match-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 600px; }
+  table.match-table thead tr { background: var(--green-dark); }
+  table.match-table thead th { color: var(--white); font-weight: 700; padding: 10px 8px; text-align: center; white-space: nowrap; font-size: 0.75rem; letter-spacing: 0.04em; }
+  table.match-table.women-table thead tr { background: var(--burgundy); }
+  table.match-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+  table.match-table tbody tr:hover { background: var(--green-pale); }
+  table.match-table.women-table tbody tr:hover { background: var(--burgundy-pale); }
+  table.match-table tbody tr:nth-child(even) { background: #f4f8f5; }
+  table.match-table.women-table tbody tr:nth-child(even) { background: #faf5f5; }
+  table.match-table td, table.match-table th { padding: 8px 8px; text-align: center; vertical-align: middle; }
+  table.match-table tbody th { font-weight: 700; background: rgba(26,61,43,0.04); font-size: 0.78rem; white-space: nowrap; }
+  table.match-table.women-table tbody th { background: rgba(92,42,42,0.04); }
+  td.win-cell { color: #1a6b3e; font-weight: 700; }
+  td.loss-cell { color: var(--burgundy); font-weight: 700; }
+  td.self-cell { background: #f0f0f0; color: #999; }
+  /* footer */
+  footer { background: #111e17; color: rgba(255,255,255,0.55); text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 2.2; border-top: 3px solid var(--burgundy); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--green-light); letter-spacing: 0.12em; display: block; margin-bottom: 4px; }
+  .footer-sub { color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.04em; }
+  .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.12); margin: 16px auto; }
+  @media (max-width: 640px) { .section { padding: 32px 16px 48px; } .page-hero { padding: 36px 18px 30px; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .page-hero-title-jp { animation: fadeUp 0.65s 0.12s both; }
+  .page-hero-subtitle { animation: fadeUp 0.5s 0.30s both; }
+  .breadcrumb { animation: fadeUp 0.45s 0.44s both; }
+  @media (prefers-reduced-motion: reduce) { .page-hero-title-jp, .page-hero-subtitle, .breadcrumb { animation: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">
+      <img src="../../images/nu_logo_transparent.png" alt="名大ロゴ" class="logo-nu-icon" />
+      <span class="logo-title-jp">名古屋大学</span>
+    </a>
+    <div class="header-shortcuts">
+      <a href="../../other/index.html" class="hdr-btn hdr-btn-primary">新入生・新歓情報</a>
+      <a href="../../plan/index.html"  class="hdr-btn hdr-btn-outline">活動計画</a>
+    </div>
+  </div>
+</header>
+
+<div class="identity-stripe">
+  <a href="../../member/index.html" class="stripe-nav-btn"><span class="stripe-en">MEMBERS</span><span class="stripe-jp">部員紹介</span></a>
+  <a href="../../result/index.html"  class="stripe-nav-btn active"><span class="stripe-en">RESULTS</span><span class="stripe-jp">試合結果</span></a>
+  <a href="../../gallery/index.html" class="stripe-nav-btn"><span class="stripe-en">GALLERY</span><span class="stripe-jp">ギャラリー</span></a>
+  <a href="http://nuvc.bbs.fc2.com/" target="_blank" class="stripe-nav-btn"><span class="stripe-en">BULLETIN BOARD</span><span class="stripe-jp">掲示板</span></a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-title-jp">2021年度 七大戦</div>
+    <div class="page-hero-subtitle">GAME RESULTS 2021</div>
+    <div class="breadcrumb">
+      <a href="../../index.html">ホーム</a><span>›</span>
+      <a href="../index.html">試合結果</a><span>›</span>
+      2021年度
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <a href="../index.html" class="back-link">← 試合結果トップへ戻る</a>
+
+  <div class="result-tabs">
+      <a href="spring.html" class="result-tab">春季東海リーグ</a>
+      <a href="spring_ken.html" class="result-tab">春季県リーグ</a>
+      <a href="autumn.html" class="result-tab">秋季東海リーグ</a>
+      <a href="autumn_ken.html" class="result-tab">秋季県リーグ</a>
+      <a href="nanadai.html" class="result-tab active">七大戦</a>
+      <a href="result.html" class="result-tab">その他の結果</a>
+      
+  </div>
+
+  <div class="content-body">
+<h2>全国七大学総合体育大会</h2>
+	
+	<br>
+	<h3 id="men">男子部</h3>
+	新型コロナウイルスの影響により中止
+	<br>
+	
+	<h3 class="women-heading" id="women">女子部</h3>
+	<!--<div class="table-wrap"><table class="match-table women-table"><tbody>
+	<tr>
+		<th>チーム名</th>
+		<th>北海道大</th>
+		<th>東北大</th>
+		<th>東京大</th>
+		<th>名古屋大</th>
+		<th>大阪大</th>
+		<th>京都大</th>
+		<th>九州大</th>
+		<th>勝敗</th>
+		<th>セット率</th>
+		<th>得点率</th>
+		<th>順位</th>
+	</tr>
+	
+	<tr>
+		<th>北海道大学</th>
+		<td class="self-cell">＊</td>
+		<td class="loss-cell">●<br>21-25<br>20-25<br>&nbsp;</td>
+		<td class="loss-cell">●<br>25-27<br>19-25<br></td>
+		<td class="loss-cell">●<br>23-25<br>22-25<br></td>
+		<td class="win-cell">○<br>25-13<br>25-12<br></td>
+		<td class="win-cell">○<br>25-14<br>25-21<br></td>
+		<td class="loss-cell">●<br>21-25<br>20-25<br></td>
+		<td>2勝4敗</td>
+		<td>4-8<br>(0.5)</td>
+		<td>271-262<br>(1.034)</td>
+		<td>5位</td>
+	</tr>
+	
+	<tr>
+		<th>東北大学</th>
+		<td class="win-cell">○<br>25-21<br>25-20<br></td>
+		<td class="self-cell">＊</td>
+		<td class="loss-cell">●<br>29-31<br>25-19<br>11-25</td>
+		<td class="win-cell">○<br>15-25<br>25-17<br>25-16</td>
+		<td class="win-cell">○<br>25-16<br>25-11<br></td>
+		<td class="win-cell">○<br>25-17<br>25-23<br></td>
+		<td class="loss-cell">●<br>18-25<br>23-25<br></td>
+		<td>4勝2敗</td>
+		<td>9-5<br>(1.8)</td>
+		<td>321-291<br>(1.103)</td>
+		<td>3位</td>
+	</tr>
+	
+	<tr>
+		<th>東京大学</th>
+		<td class="win-cell">○<br>27-25<br>25-19<br></td>
+		<td class="win-cell">○<br>31-29<br>19-25<br>25-11</td>
+		<td class="self-cell">＊</td>
+		<td class="win-cell">○<br>25-13<br>25-15<br></td>
+		<td class="win-cell">○<br>25-6<br>25-13<br></td>
+		<td class="win-cell">○<br>25-18<br>25-22<br></td>
+		<td class="win-cell">○<br>25-16<br>25-20<br></td>
+		<td>6勝0敗</td>
+		<td>12-1<br>(12)</td>
+		<td>327-232<br>(1.410)</td>
+		<td>1位</td>
+	</tr>
+	
+	<tr>
+		<th>名古屋大学</th>
+		<td class="win-cell">○<br>25-23<br>25-22<br></td>
+		<td class="loss-cell">●<br>25-15<br>17-25<br>16-25</td>
+		<td class="loss-cell">●<br>13-25<br>15-25<br></td>
+		<td class="self-cell">＊</td>
+		<td class="win-cell">○<br>25-16<br>25-16<br></td>
+		<td class="win-cell">○<br>20-25<br>25-16<br>25-23</td>
+		<td class="loss-cell">●<br>27-25<br>21-25<br>23-25</td>
+		<td>3勝3敗</td>
+		<td>8-7<br>(1.143)</td>
+		<td>327-331<br>(0.988)</td>
+		<td>4位</td>
+	</tr>
+	
+	<tr>
+		<th>大阪大学</th>
+		<td class="loss-cell">●<br>13-25<br>12-25<br></td>
+		<td class="loss-cell">●<br>16-25<br>11-25<br></td>
+		<td class="loss-cell">●<br>6-25<br>13-25<br></td>
+		<td class="loss-cell">●<br>16-25<br>16-25<br><br></td>
+		<td class="self-cell">＊</td>
+		<td class="loss-cell">●<br>25-23<br>13-25<br>17-25</td>
+		<td class="loss-cell">●<br>23-25<br>18-25<br></td>
+		<td>0勝6敗</td>
+		<td>1-8<br>(0.125)</td>
+		<td>199-323<br>(0.616)</td>
+		<td>7位</td>
+	</tr>
+	
+	<tr>
+		<th>京都大学</th>
+		<td class="loss-cell">●<br>14-25<br>21-25<br></td>
+		<td class="loss-cell">●<br>17-25<br>23-25<br></td>
+		<td class="loss-cell">●<br>18-25<br>22-25<br></td>
+		<td class="loss-cell">●<br>25-20<br>16-25<br>23-25</td>
+		<td class="win-cell">○<br>23-25<br>25-13<br>25-17</td>
+		<td class="self-cell">＊</td>
+		<td class="loss-cell">●<br>25-21<br>13-25<br>22-25</td>
+		<td>1勝5敗</td>
+		<td>4-11<br>(0.364)</td>
+		<td>312-346<br>(0.902)</td>
+		<td>6位</td>
+	</tr>
+
+	<tr>
+		<th>九州大学</th>
+		<td class="win-cell">○<br>25-21<br>25-20<br></td>
+		<td class="win-cell">○<br>25-18<br>25-23<br></td>
+		<td class="loss-cell">●<br>16-25<br>20-25<br></td>
+		<td class="win-cell">○<br>25-27<br>25-21<br>25-23</td>
+		<td class="win-cell">○<br>25-23<br>25-18<br></td>
+		<td class="win-cell">○<br>21-25<br>25-13<br>25-22</td>
+		<td class="self-cell">＊</td>
+		<td>5勝1敗</td>
+		<td>10-4<br>(2.5)</td>
+		<td>332-304<br>(1.092)</td>
+		<td>2位</td>
+	</tr>
+
+	</tbody></table></div>
+	<br>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">NUVC</span>
+  <div class="footer-sub">名古屋大学体育会バレーボール部</div>
+  <div class="footer-divider"></div>
+  〒464-0814 愛知県名古屋市千種区不老町 名古屋大学<br>
+  <button class="tos-link" onclick="openTos()">利用規約</button><br><br>
+  <span style="font-size:0.72rem; color:rgba(255,255,255,0.3);">&copy; 名古屋大学バレーボール部 All Rights Reserved.</span>
+</footer>
+
+<div id="tos-overlay" class="tos-overlay" onclick="closeTos()">
+  <div class="tos-modal" onclick="event.stopPropagation()">
+    <button class="tos-close" onclick="closeTos()" aria-label="閉じる">&times;</button>
+    <h2 class="tos-title">利用規約</h2>
+    <div class="tos-body">
+      <p class="tos-updated">最終更新日：2025年4月1日</p>
+      <h3>第1条（適用）</h3><p>本利用規約（以下「本規約」）は、名古屋大学体育会バレーボール部（以下「当部」）が運営するウェブサイト（以下「本サイト」）の利用条件を定めるものです。</p>
+      <h3>第2条（知的財産権）</h3><p>本サイトに掲載されているコンテンツの著作権は、当部または正当な権利を有する第三者に帰属します。</p>
+      <h3>第3条（禁止事項）</h3><p>法令違反・権利侵害・過大な負荷をかける行為等は禁止します。</p>
+      <h3>第4条（免責事項）</h3><p>本サイトの利用により生じた損害について、当部は一切の責任を負いかねます。</p>
+      <h3>第5条（規約の変更）</h3><p>当部は、必要に応じて本規約を変更することがあります。</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.tos-link { background: none; border: none; color: rgba(255,255,255,0.45); font-size: 0.78rem; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+.tos-link:hover { color: rgba(255,255,255,0.8); }
+.tos-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9000; align-items: center; justify-content: center; padding: 20px; }
+.tos-overlay.open { display: flex; }
+.tos-modal { background: #fff; color: #222; border-radius: 10px; max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 36px 32px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.tos-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #666; }
+.tos-title { font-size: 1.2rem; font-weight: 800; margin: 0 0 6px; }
+.tos-updated { font-size: 0.75rem; color: #888; margin: 0 0 20px; }
+.tos-body h3 { font-size: 0.88rem; font-weight: 700; margin: 16px 0 4px; }
+.tos-body p { font-size: 0.82rem; color: #444; line-height: 1.7; margin: 0 0 8px; }
+</style>
+<script>
+function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTos(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>名古屋大学バレーボール部 NUVC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1a3d2b;
+    --green-main:   #2d6a4f;
+    --green-mid:    #40916c;
+    --green-light:  #74c69d;
+    --green-pale:   #e8f5ec;
+    --burgundy:     #5c2a2a;
+    --burgundy-mid: #7a3838;
+    --burgundy-pale:#f0e6e6;
+    --cream:        #f5f0e8;
+    --gold:         #b8963e;
+    --white:        #ffffff;
+    --off-white:    #f8f8f6;
+    --text-dark:    #0f2318;
+    --text-mid:     #3a4a3f;
+    --text-light:   #6b7d72;
+    --border:       #d0ddd5;
+    --shadow-sm:    0 2px 10px rgba(26,61,43,0.10);
+    --shadow:       0 4px 24px rgba(26,61,43,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--off-white); color: var(--text-dark); font-size: 15px; line-height: 1.8; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HEADER ── */
+  header { background: var(--green-dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 0 24px; height: 64px; gap: 16px; }
+  .header-shortcuts { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .hdr-btn { display: inline-block; padding: 6px 14px; border-radius: 3px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.18s, transform 0.18s; }
+  .hdr-btn:hover { transform: translateY(-1px); }
+  .hdr-btn-primary { background: var(--burgundy); color: var(--white); border: 1px solid var(--burgundy-mid); }
+  .hdr-btn-primary:hover { background: var(--burgundy-mid); }
+  .hdr-btn-outline { background: transparent; color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.28); }
+  .hdr-btn-outline:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+  @media (max-width: 540px) { .header-shortcuts { display: none; } }
+  .logo { display: flex; align-items: center; gap: 14px; color: var(--white); }
+  .logo-nu-icon { width: 50px; height: 50px; opacity: 0.92; filter: brightness(0) invert(1); transition: transform 0.3s ease, filter 0.3s ease; }
+  .logo-title-jp { font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,0.88); letter-spacing: 0.06em; white-space: nowrap; }
+
+  /* ── IDENTITY STRIPE — nav buttons ── */
+  .identity-stripe {
+    background: var(--burgundy);
+    display: flex; align-items: stretch; justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .stripe-nav-btn {
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.88);
+    font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; letter-spacing: 0.04em;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap; flex: 1; min-width: 0;
+    flex-direction: column; gap: 2px;
+    padding: clamp(8px, 1.2vw, 10px) clamp(6px, 1.5vw, 20px);
+  }
+  .stripe-nav-btn:last-child { border-right: none; }
+  .stripe-nav-btn:hover { background: var(--burgundy-mid); color: var(--white); }
+  .stripe-nav-btn .stripe-en { font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.48rem, 1vw, 0.65rem); letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+  .stripe-nav-btn .stripe-jp { font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; color: rgba(255,255,255,0.92); }
+
+  /* mobile hamburger hidden now header is centred */
+  .hamburger { display: none; }
+  .mobile-nav { display: none; background: var(--green-dark); padding: 8px 0 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .mobile-nav.open { display: block; }
+  .mobile-nav a { display: block; padding: 11px 28px; color: rgba(255,255,255,0.82); font-size: 0.92rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(155deg, var(--green-dark) 0%, #1e4532 55%, var(--green-main) 100%);
+    padding: 88px 24px 80px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: repeating-linear-gradient(-48deg, transparent 0px, transparent 34px, rgba(255,255,255,0.014) 34px, rgba(255,255,255,0.014) 36px);
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 50% 70% at 0% 100%, rgba(92,42,42,0.2) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(20,50,35,0.5) 0%, transparent 65%);
+  }
+
+  /* ── CLOSE-PACK LOGO PATTERN ── */
+  /* Logo unit: 22vw wide, aspect ~0.65 tall → height ≈ 14.3vw             */
+  /* Top/bot rows: 4 logos at 22vw each, spaced 25vw apart (gap=3vw)       */
+  /* Mid row: 3 logos offset +12.5vw (half-pitch) so each falls in gap     */
+  /* Vertical: top row centred at 0% (half cut), mid at 50%, bot at 100%   */
+  :root {
+    --logo-w: 11vw;
+    --logo-h: 7.15vw;
+    --pitch:  25vw;
+    --half-h: 3.575vw;
+  }
+  .hero-logos {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .hero-logos img {
+    position: absolute;
+    width: var(--logo-w);
+    filter: brightness(0) invert(1);
+    user-select: none;
+  }
+  .hero-logos img.row-top {
+    opacity: 0.025;
+    top: calc(-1 * var(--half-h));
+  }
+  .hero-logos img.row-top:nth-child(1) { left: calc(0 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-top:nth-child(2) { left: calc(1 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-top:nth-child(3) { left: calc(2 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-top:nth-child(4) { left: calc(3 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-mid {
+    opacity: 0.038;
+    top: 50%; transform: translateY(-50%);
+  }
+  .hero-logos img.row-mid:nth-child(5) { left: calc(-0.5 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-mid:nth-child(6) { left: calc(0.5 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-mid:nth-child(7) { left: calc(1.5 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-mid:nth-child(8) { left: calc(2.5 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-mid:nth-child(9) { left: calc(3.5 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-bot {
+    opacity: 0.025;
+    bottom: calc(-1 * var(--half-h));
+  }
+  .hero-logos img.row-bot:nth-child(10) { left: calc(0 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-bot:nth-child(11) { left: calc(1 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-bot:nth-child(12) { left: calc(2 * var(--pitch) + 7.5vw); }
+  .hero-logos img.row-bot:nth-child(13) { left: calc(3 * var(--pitch) + 7.5vw); }
+
+  .hero-content { position: relative; z-index: 3; }
+  .hero-eyebrow { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 22px; }
+  .hero-eyebrow-line { width: 48px; height: 1px; background: rgba(255,255,255,0.25); }
+  .hero-eyebrow-text { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+
+  .hero-title-nuvc {
+    font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900; font-style: italic;
+    line-height: 0.9; letter-spacing: 0.06em; display: block;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.45);
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+  }
+  .hero-title-jp {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(1rem, 4.8vw, 3.2rem);
+    font-weight: 900; color: var(--white);
+    letter-spacing: 0.1em; display: block; white-space: nowrap;
+    text-shadow: 0 0 40px rgba(255,255,255,0.2), 2px 2px 0 rgba(0,0,0,0.55), -1px -1px 0 rgba(0,0,0,0.3);
+    margin-bottom: 18px;
+  }
+  .hero h1 { margin-bottom: 10px; }
+  .hero-sub { color: rgba(255,255,255,0.58); font-size: 0.86rem; margin-bottom: 40px; letter-spacing: 0.08em; }
+  .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn { display: inline-block; padding: 13px 28px; border-radius: 3px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s, background 0.18s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+  .btn-primary { background: var(--burgundy); color: var(--white); border: 1.5px solid var(--burgundy-mid); }
+  .btn-primary:hover { background: var(--burgundy-mid); }
+  .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.45); color: var(--white); }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+  /* ── FEATURE SECTION (rounded frame: photo + about card) ── */
+  .feature-section {
+    display: grid;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 32px auto 0;
+    max-width: 1320px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+  /* Gradient — clipped to the rounded frame */
+  .feature-section::after {
+    content: '';
+    position: absolute; inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent 22%, rgba(4, 15, 10, 0.94) 90%);
+  }
+  .feature-bg {
+    grid-area: 1 / 1;
+    width: 100%; height: 550px;
+    object-fit: cover; object-position: center;
+    display: block;
+    z-index: 1;
+  }
+  .feature-card-anchor {
+    grid-area: 1 / 1;
+    position: relative; z-index: 3;
+    display: flex; align-items: flex-end; justify-content: flex-end;
+    padding: 0 44px 44px 0;
+    pointer-events: none;
+  }
+  .feature-card {
+    pointer-events: auto;
+    width: min(400px, 50%);
+    background: rgba(3, 12, 8, 0.18);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    padding: 28px 24px 28px 28px;
+    border-left: 3px solid rgba(255,255,255,0.6);
+    border-radius: 0 0 0 4px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .feature-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.8); }
+  .feature-title { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 900; color: #ffffff; line-height: 1.25; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.28); position: relative; text-shadow: 0 1px 8px rgba(0,0,0,0.8), 0 0 16px rgba(0,0,0,0.4); }
+  .feature-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 40px; height: 1px; background: var(--green-light); }
+  .feature-body { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.96); line-height: 2; text-shadow: 0 1px 6px rgba(0,0,0,0.8); }
+  .feature-caption { font-size: 0.72rem; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; }
+  @media (max-width: 600px) {
+    /* Switch to column: photo on top, text panel below */
+    .feature-section {
+      display: flex; flex-direction: column;
+      margin: 14px 10px; border-radius: 12px;
+      background: #04100a; /* dark base — matches gradient endpoint */
+    }
+    .feature-bg { height: clamp(240px, 66vw, 340px); flex-shrink: 0; }
+    /* Gradient only covers photo, fades bottom edge into the text panel */
+    .feature-section::after {
+      height: clamp(240px, 66vw, 340px);
+      bottom: auto; /* don't stretch into text panel */
+      background: linear-gradient(to bottom, transparent 48%, #04100a 100%);
+    }
+    /* Text panel sits below photo as normal flow */
+    .feature-card-anchor {
+      position: static; display: block;
+      padding: 10px 18px 20px; pointer-events: auto;
+    }
+    .feature-card {
+      width: 100%;
+      background: transparent;
+      backdrop-filter: none; -webkit-backdrop-filter: none;
+      border-left: none; border-top: none;
+      border-radius: 0; padding: 0; gap: 10px;
+    }
+    /* "ABOUT NUVC" becomes a small section title */
+    .feature-label {
+      font-size: 0.78rem; letter-spacing: 0.3em;
+      color: var(--green-light); opacity: 1;
+      padding-bottom: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .feature-title { font-size: 1.08rem; padding-bottom: 8px; text-shadow: none; }
+    .feature-body { font-size: 0.8rem; line-height: 1.72; text-shadow: none; }
+    .feature-caption { font-size: 0.68rem; }
+  }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 1100px; margin: 0 auto; padding: 64px 24px; }
+  .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--text-light); margin-bottom: 4px; }
+  .section-title { font-size: clamp(1.3rem, 2.8vw, 1.85rem); font-weight: 900; color: var(--green-dark); line-height: 1.2; margin-bottom: 32px; padding-bottom: 14px; border-bottom: 2px solid var(--border); position: relative; }
+  .section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 48px; height: 2px; background: var(--burgundy); }
+
+  /* ── INFO CARDS ── */
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .info-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .info-card-header { background: var(--green-dark); padding: 16px 22px; display: flex; align-items: center; gap: 12px; }
+  .info-card-header-icon { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-card-header-icon svg { width: 16px; height: 16px; stroke: var(--green-light); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .info-card h3 { font-size: 0.88rem; font-weight: 700; color: var(--white); margin: 0; letter-spacing: 0.03em; }
+  .info-card-body { padding: 22px 22px; flex: 1; border-left: 3px solid var(--green-pale); }
+  .info-card-body p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.9; }
+  .info-card-body a { color: var(--green-mid); text-decoration: underline; word-break: break-all; }
+
+  /* ── RECRUIT BANNER ── */
+  .recruit-banner { background: var(--green-dark); border-radius: 8px; padding: 36px 36px; color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 36px; border-left: 5px solid var(--burgundy); }
+  .recruit-banner h3 { font-size: 1.15rem; font-weight: 900; margin-bottom: 6px; color: var(--green-light); }
+  .recruit-banner p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.75; }
+
+  /* ── SNS ── */
+  .sns-section { background: var(--green-dark); }
+  .sns-group { margin-bottom: 32px; }
+  .sns-group:last-child { margin-bottom: 0; }
+  .sns-group-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4); margin-bottom: 12px; text-transform: uppercase;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sns-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sns-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+    border: 1px solid transparent;
+    transition: transform 0.18s, background 0.18s, border-color 0.18s;
+  }
+  .sns-btn:hover { transform: translateY(-2px); }
+  .sns-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  /* Instagram — burgundy themed */
+  .sns-instagram {
+    background: rgba(92,42,42,0.5);
+    border-color: var(--burgundy-mid);
+    color: rgba(255,255,255,0.85);
+  }
+  .sns-instagram:hover { background: var(--burgundy); border-color: var(--burgundy-mid); color: var(--white); }
+  .sns-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+
+  /* ── COPY EMAIL ── */
+  .email-wrap { display: inline-flex; align-items: center; gap: 5px; vertical-align: middle; }
+  .email-text { color: var(--green-mid); word-break: break-all; }
+  .copy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: none; border-radius: 3px; cursor: pointer;
+    background: var(--green-pale); color: var(--green-dark);
+    transition: background 0.15s, transform 0.15s;
+    padding: 0;
+  }
+  .copy-btn:hover { background: var(--green-light); transform: scale(1.12); }
+  .copy-btn.copied { background: var(--green-mid); color: var(--white); }
+  .copy-btn svg { width: 12px; height: 12px; }
+  /* footer links */
+  .footer-links { display: flex; gap: 18px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 4px 0 0; }
+  .footer-links button, .footer-links a { background: none; border: none; color: rgba(255,255,255,0.38); font-size: 0.72rem; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; font-family: inherit; }
+  .footer-links button:hover, .footer-links a:hover { color: rgba(255,255,255,0.75); }
+
+  /* ── FOOTER ── */
+  footer { background: #111e17; color: rgba(255,255,255,0.55); text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 2.2; border-top: 3px solid var(--burgundy); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--green-light); letter-spacing: 0.12em; display: block; margin-bottom: 4px; }
+  .footer-sub { color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.04em; }
+  footer a { color: var(--green-light); }
+  .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.12); margin: 16px auto; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 52px 18px 46px; }
+    .recruit-banner { padding: 22px 18px; }
+    .section { padding: 44px 18px; }
+    .sns-block { padding: 18px 16px; }
+    .stripe-nav-btn .stripe-en { display: none; }
+  }
+  @media (max-width: 560px) {
+    .sns-cols { grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+    .sns-group { margin-bottom: 0; }
+    .sns-group-title { font-size: 0.78rem; margin-bottom: 8px; }
+    .sns-btn { padding: 7px 10px; font-size: 0.72rem; gap: 6px; }
+    .sns-btn svg { width: 12px; height: 12px; }
+    .sns-block { padding: 14px 14px; }
+    .section:has(.sns-cols) { padding: 28px 14px; }
+  }
+  @media (max-width: 480px) {
+    .logo-title-jp { display: none; }
+    .logo-nu-icon { width: 36px; height: 36px; }
+    .hero { padding: 36px 14px 30px; }
+    .hero-eyebrow { margin-bottom: 12px; gap: 10px; }
+    .hero-eyebrow-line { width: 30px; }
+    .hero-eyebrow-text { font-size: 0.6rem; }
+    .hero-sub { font-size: 0.76rem; margin-bottom: 24px; }
+    .btn { padding: 10px 18px; font-size: 0.78rem; }
+    .section { padding: 30px 14px; }
+    .section-title { font-size: 1.15rem; margin-bottom: 18px; }
+    .info-card h3 { font-size: 0.8rem; }
+    .info-card-body p { font-size: 0.78rem; line-height: 1.8; }
+    .recruit-banner { padding: 16px 14px; gap: 14px; }
+    .recruit-banner h3 { font-size: 0.95rem; }
+    .recruit-banner p { font-size: 0.78rem; }
+    footer { padding: 22px 14px; font-size: 0.72rem; line-height: 2; }
+    .footer-logo { font-size: 1.2rem; }
+  }
+
+  /* ════════════════════════════════════════════
+     ANIMATIONS & TRANSITIONS
+  ════════════════════════════════════════════ */
+
+  /* ── Keyframes ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes borderPulse {
+    0%, 100% { border-left-color: var(--burgundy); }
+    50%       { border-left-color: #8a3f3f; }
+  }
+  /* ── Hero entrance — each element animates in sequence ── */
+  .hero-eyebrow  { animation: fadeUp 0.55s 0.05s both; }
+  .hero-title-nuvc { animation: fadeUp 0.65s 0.22s both; }
+  .hero-title-jp   { animation: fadeUp 0.65s 0.40s both; }
+  .hero-sub        { animation: fadeUp 0.55s 0.55s both; }
+  .hero-buttons    { animation: fadeUp 0.55s 0.70s both; }
+
+  /* ── Identity stripe — text slides down from above ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .stripe-nav-btn { animation: fadeDown 0.42s both; }
+  .stripe-nav-btn:nth-child(1) { animation-delay: 0.08s; }
+  .stripe-nav-btn:nth-child(2) { animation-delay: 0.16s; }
+  .stripe-nav-btn:nth-child(3) { animation-delay: 0.24s; }
+  .stripe-nav-btn:nth-child(4) { animation-delay: 0.32s; }
+
+  /* Stripe button: animated underline indicator on hover */
+  .stripe-nav-btn { position: relative; }
+  .stripe-nav-btn::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+    background: rgba(255,255,255,0.55); transition: width 0.22s ease, left 0.22s ease;
+  }
+  .stripe-nav-btn:hover::after { width: 60%; left: 20%; }
+
+  /* ── Info card — richer hover ── */
+  .info-card {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(26,61,43,0.16);
+  }
+  .info-card-body { transition: border-left-color 0.25s ease; }
+  .info-card:hover .info-card-body { border-left-color: var(--green-mid); }
+
+  /* ── Buttons — glow on hover ── */
+  .btn-primary { transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+  .btn-primary:hover { box-shadow: 0 6px 24px rgba(92,42,42,0.45); }
+  .btn-outline:hover { box-shadow: 0 6px 24px rgba(255,255,255,0.1); }
+
+  /* ── Recruit banner border pulse ── */
+  .recruit-banner { animation: borderPulse 3.5s ease-in-out infinite; }
+
+  /* ── Scroll-reveal base state ── */
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger delays for grid children */
+  .reveal-grid > .reveal:nth-child(1) { transition-delay: 0s; }
+  .reveal-grid > .reveal:nth-child(2) { transition-delay: 0.1s; }
+  .reveal-grid > .reveal:nth-child(3) { transition-delay: 0.2s; }
+  .reveal-grid > .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+  /* ── SNS btn — lift on hover already set; add glow ── */
+  .sns-btn { transition: transform 0.18s, background 0.18s, border-color 0.18s, box-shadow 0.18s; }
+  .sns-instagram:hover { box-shadow: 0 4px 14px rgba(92,42,42,0.35); }
+
+  /* ── Header logo — subtle fade-in on load ── */
+  .logo { animation: fadeIn 0.5s 0s both; }
+  .logo:hover .logo-nu-icon { transform: rotate(-6deg) scale(1.08); filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(116,198,157,0.5)); }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/nu_logo_transparent.png" alt="名大ロゴ" class="logo-nu-icon" />
+      <span class="logo-title-jp">名古屋大学</span>
+    </a>
+  </div>
+</header>
+
+<!-- IDENTITY STRIPE — page navigation buttons -->
+<div class="identity-stripe">
+  <a href="member/index.html" class="stripe-nav-btn"><span class="stripe-en">MEMBERS</span><span class="stripe-jp">部員紹介</span></a>
+  <a href="result/index.html" class="stripe-nav-btn"><span class="stripe-en">GAME RESULTS</span><span class="stripe-jp">試合結果</span></a>
+  <a href="gallery/index.html" class="stripe-nav-btn"><span class="stripe-en">GALLERY</span><span class="stripe-jp">ギャラリー</span></a>
+  <a href="http://nuvc.bbs.fc2.com/" target="_blank" class="stripe-nav-btn"><span class="stripe-en">BULLETIN BOARD</span><span class="stripe-jp">掲示板</span></a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- close-pack logo pattern: 4 top · 3 mid (offset) · 4 bot -->
+  <div class="hero-logos" aria-hidden="true">
+    <img src="images/nu_logo_transparent.png" alt="" class="row-top" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-top" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-top" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-top" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-mid" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-mid" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-mid" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-mid" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-mid" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-bot" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-bot" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-bot" />
+    <img src="images/nu_logo_transparent.png" alt="" class="row-bot" />
+  </div>
+
+  <!-- main content -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Nagoya University Volleyball Club</span>
+      <span class="hero-eyebrow-line"></span>
+    </div>
+    <h1>
+      <span class="hero-title-nuvc">NUVC</span>
+      <span class="hero-title-jp">名古屋大学バレーボール部</span>
+    </h1>
+    <p class="hero-sub"><span style="white-space:nowrap">春秋のリーグ戦・七大戦に情熱を注ぐ、</span><span style="white-space:nowrap">名大の仲間たち</span></p>
+    <div class="hero-buttons">
+      <a href="other/index.html" class="btn btn-primary">新入生・新歓情報</a>
+      <a href="plan/index.html" class="btn btn-outline">活動計画を見る</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- FEATURE SECTION: recent photos + club intro -->
+<!-- UPDATE PHOTO: replace the img src below with a new file from gallery/recent/ -->
+<div class="feature-section">
+  <img class="feature-bg" src="gallery/recent/1.jpg" alt="2025年秋季東海リーグ" />
+  <div class="feature-card-anchor">
+    <div class="feature-card reveal">
+      <p class="feature-label">ABOUT NUVC</p>
+      <h2 class="feature-title">バレーボール部について</h2>
+      <p class="feature-body">名古屋大学バレーボール部は、春・秋の東海リーグ戦、夏の名阪戦・七大戦での勝利を目指し、日々練習に励んでいます。<br><br>ご不明な点・ご質問は公式InstagramのDM、またはメールにてお気軽にご連絡ください。</p>
+      <p class="feature-caption">写真：2025年秋季東海リーグ</p>
+    </div>
+  </div>
+</div>
+
+<!-- INFORMATION -->
+<div class="section" style="padding-top: 58px;">
+  <p class="section-label reveal">INFORMATION</p>
+  <h2 class="section-title reveal">部からのお知らせ</h2>
+  <div class="info-grid reveal-grid">
+
+    <div class="info-card reveal">
+      <div class="info-card-header">
+        <div class="info-card-header-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>OB・OGの方へ</h3>
+      </div>
+      <div class="info-card-body">
+        <p>いつも温かいご支援をいただきありがとうございます。部員一同、日々練習に励んでおります。<br><br>
+        OB・OG様はお気軽に練習にご参加いただけます。ご来訪の際は事前にご連絡いただけますと幸いです。<br><br>
+        <strong>【名大クラブ】</strong><br>
+        <a href="https://meidaiclub.cybozu.com/login">名大クラブログインはこちら</a><br>
+        ログイン情報不明の場合：<span class="email-wrap"><span class="email-text">tomo09w@icloud.com</span><button class="copy-btn" onclick="copyEmail(this,'tomo09w@icloud.com')" title="コピー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></p>
+      </div>
+    </div>
+
+    <div class="info-card reveal">
+      <div class="info-card-header">
+        <div class="info-card-header-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>他大学・高校の方へ</h3>
+      </div>
+      <div class="info-card-body">
+        <p>練習試合のご依頼など、お問い合わせは以下までご連絡ください。<br><br>
+        男子部：市川 敦士<br>
+        <span class="email-wrap"><span class="email-text">dr.49z.9151@s.thers.ac.jp</span><button class="copy-btn" onclick="copyEmail(this,'dr.49z.9151@s.thers.ac.jp')" title="コピー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span><br><br>
+        女子部：木下 亜美<br>
+        <span class="email-wrap"><span class="email-text">kinoshita.ami.k7@s.mail.nagoya-u.ac.jp</span><button class="copy-btn" onclick="copyEmail(this,'kinoshita.ami.k7@s.mail.nagoya-u.ac.jp')" title="コピー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="recruit-banner reveal">
+    <div>
+      <h3>部員募集中 — プレーヤー・アナリスト・マネージャー</h3>
+      <p>バレーボール部は男女ともに、プレーヤー・アナリスト・マネージャーを大募集しています。<br>
+      少しでも興味のある方は、ぜひ気軽に練習見学へお越しください。参加も大歓迎です。</p>
+    </div>
+    <a href="other/index.html" class="btn btn-outline" style="white-space:nowrap; flex-shrink:0; border-color:rgba(255,255,255,0.4);">新歓情報を見る</a>
+  </div>
+</div>
+
+<!-- SNS -->
+<div class="sns-section">
+  <div class="section">
+    <p class="section-label reveal">SOCIAL MEDIA</p>
+    <h2 class="section-title reveal" style="color:var(--white); border-bottom-color:rgba(255,255,255,0.12);">公式SNS</h2>
+    <div class="sns-cols reveal-grid">
+
+      <div class="sns-group reveal">
+        <div class="sns-group-title">男子部</div>
+        <div class="sns-row">
+          <a href="https://www.instagram.com/nagoya_volley/" target="_blank" class="sns-btn sns-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="sns-group reveal">
+        <div class="sns-group-title">女子部</div>
+        <div class="sns-row">
+          <a href="https://www.instagram.com/nuvc.shinkan/" target="_blank" class="sns-btn sns-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="sns-group reveal">
+        <div class="sns-group-title">新歓SNS</div>
+        <div class="sns-row">
+          <a href="https://www.instagram.com/nagoya_volley_2026_/" target="_blank" class="sns-btn sns-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            男子 IG
+          </a>
+          <a href="https://www.instagram.com/nuvc.shinkan/" target="_blank" class="sns-btn sns-instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            女子 IG
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">NUVC</span>
+  <div class="footer-sub">名古屋大学体育会バレーボール部</div>
+  <div class="footer-divider"></div>
+  <div style="font-size:0.78rem; color:rgba(255,255,255,0.4); line-height:1.8;">
+    〒464-0814 愛知県名古屋市千種区不老町 名古屋大学
+  </div>
+  <div class="footer-links">
+    <button onclick="openTos()">利用規約</button>
+  </div>
+  <div style="margin-top:16px; font-size:0.72rem; color:rgba(255,255,255,0.25);">&copy; 名古屋大学バレーボール部 All Rights Reserved.</div>
+</footer>
+<script>
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+/* ── Copy email ── */
+function copyEmail(btn, email) {
+  navigator.clipboard.writeText(email).then(function() {
+    btn.classList.add('copied');
+    btn.title = 'コピー済み！';
+    setTimeout(function() { btn.classList.remove('copied'); btn.title = 'コピー'; }, 1800);
+  });
+}
+
+/* ── Scroll-reveal ── */
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-right').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+<!-- TOS MODAL -->
+<div id="tos-overlay" class="tos-overlay" onclick="closeTos()">
+  <div class="tos-modal" onclick="event.stopPropagation()">
+    <button class="tos-close" onclick="closeTos()" aria-label="閉じる">&times;</button>
+    <h2 class="tos-title">利用規約</h2>
+    <div class="tos-body">
+      <p class="tos-updated">最終更新日：2025年4月1日</p>
+
+      <h3>第1条（適用）</h3>
+      <p>本利用規約（以下「本規約」）は、名古屋大学体育会バレーボール部（以下「当部」）が運営するウェブサイト（以下「本サイト」）の利用条件を定めるものです。本サイトを閲覧・利用するすべての方（以下「利用者」）は、本規約に同意したものとみなします。</p>
+
+      <h3>第2条（知的財産権）</h3>
+      <p>本サイトに掲載されているテキスト・画像・映像・デザイン・ロゴ等のコンテンツの著作権は、当部または正当な権利を有する第三者に帰属します。利用者は、当部の事前の書面による許可なく、これらのコンテンツを複製・転載・改変・再配布することはできません。</p>
+
+      <h3>第3条（禁止事項）</h3>
+      <p>利用者は、本サイトの利用にあたり、以下の行為を行ってはなりません。</p>
+      <ul>
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当部または第三者の権利・利益を侵害する行為</li>
+        <li>本サイトのサーバーまたはネットワークに過大な負荷をかける行為</li>
+        <li>本サイトの運営を妨害するおそれのある行為</li>
+        <li>その他、当部が不適切と判断する行為</li>
+      </ul>
+
+      <h3>第4条（外部リンク）</h3>
+      <p>本サイトには外部サイトへのリンクが含まれる場合があります。当部はリンク先の内容・運営について一切の責任を負いません。外部サイトの利用は利用者自身の判断と責任において行ってください。</p>
+
+      <h3>第5条（免責事項）</h3>
+      <p>当部は、本サイトに掲載する情報の正確性・完全性・有用性について、可能な限り正確な情報を提供するよう努めますが、その内容を保証するものではありません。本サイトの利用により生じた損害について、当部は一切の責任を負いかねます。また、予告なく情報を変更・削除することがあります。</p>
+
+      <h3>第6条（プライバシー）</h3>
+      <p>当部は、本サイトを通じて取得した個人情報を、お問い合わせへの回答・活動案内の送付など必要な範囲でのみ利用し、法令に基づく場合を除き第三者に提供しません。本サイトはアクセス解析のためCookieを使用することがあります。</p>
+
+      <h3>第7条（写真・動画の掲載）</h3>
+      <p>本サイトに掲載する部員・関係者の写真・動画は、本人の同意を得た上で使用しています。掲載内容に関するご要望は、当部の公式SNSまたは顧問教員を通じてお問い合わせください。</p>
+
+      <h3>第8条（規約の変更）</h3>
+      <p>当部は、必要に応じて本規約を変更することがあります。変更後の規約は本サイトへの掲載をもって効力を生じるものとし、利用者はこれに同意したものとみなします。</p>
+
+      <h3>第9条（準拠法・管轄）</h3>
+      <p>本規約の解釈および適用は日本法に準拠するものとし、本サイトに関する紛争については名古屋地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+
+      <h3>お問い合わせ</h3>
+      <p>本規約に関するお問い合わせは、当部の公式SNSアカウントまたは顧問教員を通じてご連絡ください。</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.tos-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9000; align-items: center; justify-content: center; padding: 20px; }
+.tos-overlay.open { display: flex; }
+.tos-modal { background: #fff; color: #222; border-radius: 10px; max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 40px 36px 36px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.tos-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #666; line-height: 1; }
+.tos-close:hover { color: #222; }
+.tos-title { font-size: 1.3rem; font-weight: 800; margin: 0 0 6px; color: #1a1a1a; }
+.tos-updated { font-size: 0.75rem; color: #888; margin: 0 0 24px; }
+.tos-body h3 { font-size: 0.9rem; font-weight: 700; color: #1a1a1a; margin: 20px 0 6px; }
+.tos-body p, .tos-body ul { font-size: 0.84rem; color: #444; line-height: 1.75; margin: 0 0 8px; }
+.tos-body ul { padding-left: 1.4em; }
+.tos-body li { margin-bottom: 4px; }
+</style>
+<script>
+function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTos(); });
+</script>
+
+</body>
+</html>

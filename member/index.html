@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>部員紹介 — 名古屋大学バレーボール部 NUVC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1a3d2b;
+    --green-main:   #2d6a4f;
+    --green-mid:    #40916c;
+    --green-light:  #74c69d;
+    --green-pale:   #e8f5ec;
+    --burgundy:     #5c2a2a;
+    --burgundy-mid: #7a3838;
+    --burgundy-pale:#f0e6e6;
+    --white:        #ffffff;
+    --off-white:    #f8f8f6;
+    --text-dark:    #0f2318;
+    --text-mid:     #3a4a3f;
+    --text-light:   #6b7d72;
+    --border:       #d0ddd5;
+    --shadow-sm:    0 2px 10px rgba(26,61,43,0.10);
+    --shadow:       0 4px 24px rgba(26,61,43,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--off-white); color: var(--text-dark); font-size: 15px; line-height: 1.8; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HEADER ── */
+  header { background: var(--green-dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; gap: 16px; }
+  .header-shortcuts { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .hdr-btn { display: inline-block; padding: 6px 14px; border-radius: 3px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.18s, transform 0.18s; }
+  .hdr-btn:hover { transform: translateY(-1px); }
+  .hdr-btn-primary { background: var(--burgundy); color: var(--white); border: 1px solid var(--burgundy-mid); }
+  .hdr-btn-primary:hover { background: var(--burgundy-mid); }
+  .hdr-btn-outline { background: transparent; color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.28); }
+  .hdr-btn-outline:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+  .logo { display: flex; align-items: center; gap: 14px; color: var(--white); }
+  .logo-nu-icon { width: 50px; height: 50px; opacity: 0.92; filter: brightness(0) invert(1); transition: transform 0.3s ease, filter 0.3s ease; }
+  .logo:hover .logo-nu-icon { transform: rotate(-6deg) scale(1.08); filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(116,198,157,0.5)); }
+  .logo-title-jp { font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,0.88); letter-spacing: 0.06em; white-space: nowrap; }
+
+  /* ── IDENTITY STRIPE ── */
+  .identity-stripe { background: var(--burgundy); display: flex; align-items: stretch; justify-content: center; flex-wrap: nowrap; }
+  .stripe-nav-btn {
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.88);
+    font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; letter-spacing: 0.04em;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap; flex: 1; min-width: 0;
+    flex-direction: column; gap: 2px; padding: clamp(8px, 1.2vw, 10px) clamp(6px, 1.5vw, 20px);
+  }
+  .stripe-nav-btn:last-child { border-right: none; }
+  .stripe-nav-btn:hover { background: var(--burgundy-mid); color: var(--white); }
+  .stripe-nav-btn.active { background: var(--burgundy-mid); }
+  .stripe-nav-btn .stripe-en { font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.48rem, 1vw, 0.65rem); letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+  .stripe-nav-btn .stripe-jp { font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; color: rgba(255,255,255,0.92); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: linear-gradient(155deg, var(--green-dark) 0%, #1e4532 55%, var(--green-main) 100%);
+    padding: 52px 24px 44px; text-align: center; position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(-48deg, transparent 0px, transparent 34px, rgba(255,255,255,0.014) 34px, rgba(255,255,255,0.014) 36px);
+  }
+  .page-hero-content { position: relative; z-index: 2; }
+  .page-hero-title-jp {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 900; color: var(--white);
+    letter-spacing: 0.12em; text-shadow: 2px 2px 0 rgba(0,0,0,0.35); margin-bottom: 8px;
+  }
+  .page-hero-title-en {
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem;
+    letter-spacing: 0.3em; color: rgba(255,255,255,0.42); text-transform: uppercase;
+  }
+  .breadcrumb { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,0.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* ── 3-COLUMN GRID LAYOUT ── */
+  .content-wrap {
+    display: grid;
+    grid-template-columns: 1fr min(900px, 100%) 1fr;
+    align-items: start;
+  }
+  .main-content {
+    grid-column: 2;
+    padding: 56px 24px;
+  }
+
+  /* ── STICKY SIDEBAR ── */
+  .member-sidebar {
+    grid-column: 1;
+    justify-self: end;
+    align-self: start;
+    position: sticky;
+    top: 84px;
+    padding-top: 56px;
+    padding-right: clamp(14px, 2vw, 32px);
+    width: clamp(80px, 10vw, 180px);
+  }
+  .sidebar-section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    color: var(--text-light);
+    margin: 16px 0 5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+  }
+  .sidebar-section-label:first-child { margin-top: 0; }
+  .sidebar-link {
+    display: block;
+    font-size: clamp(0.68rem, 1.1vw, 0.78rem);
+    font-weight: 700;
+    color: var(--text-light);
+    padding: clamp(3px, 0.5vw, 6px) 0;
+    cursor: pointer;
+    transition: color 0.15s;
+    text-align: right;
+    white-space: nowrap;
+    background: none; border: none;
+    width: 100%; font-family: inherit;
+  }
+  .sidebar-link:hover { color: var(--green-dark); }
+  .sidebar-link.active-grade { color: var(--green-mid); font-weight: 900; }
+  .sidebar-link.active-grade-women { color: var(--burgundy-mid); font-weight: 900; }
+
+  /* ── TEAM TABS ── */
+  .team-tabs { display: flex; justify-content: center; margin-bottom: 44px; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); width: fit-content; margin-left: auto; margin-right: auto; }
+  .team-tab { display: block; padding: 12px 52px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.08em; color: var(--white); border: none; cursor: pointer; font-family: inherit; transition: opacity 0.18s; }
+  .team-tab:hover { opacity: 0.85; }
+  .team-tab-men   { background: var(--green-dark); }
+  .team-tab-women { background: var(--burgundy); }
+  .team-tab.inactive { opacity: 0.42; }
+
+  /* ── SECTION TITLE ── */
+  .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--text-light); margin-bottom: 4px; }
+  .section-header-row {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    margin-bottom: 28px; padding-bottom: 14px;
+    border-bottom: 2px solid var(--border); position: relative;
+  }
+  .section-header-row::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 48px; height: 2px; background: var(--burgundy); }
+  .section-title { font-size: clamp(1.3rem, 2.8vw, 1.85rem); font-weight: 900; color: var(--green-dark); line-height: 1.2; }
+  .section-role-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; padding-bottom: 4px; flex-shrink: 0; }
+  .section-role-en {
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.68rem; letter-spacing: 0.26em;
+    color: var(--white); background: var(--green-mid);
+    padding: 4px 13px; border-radius: 100px;
+  }
+  .section-role-en-women { background: var(--burgundy-mid); }
+  .section-role-jp { font-size: 0.88rem; font-weight: 900; color: var(--text-light); }
+
+
+  /* ── YEAR BLOCK ── */
+  .year-block { margin-bottom: 28px; }
+  .year-label { display: inline-block; color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 2px; margin-bottom: 10px; }
+  .year-label-men   { background: var(--green-dark); }
+  .year-label-women { background: var(--burgundy); }
+
+  /* ── MEMBER CARD GRID ── */
+  .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+  .member-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-left: 3px solid var(--green-mid); border-radius: 4px;
+    padding: 10px 14px; transition: box-shadow 0.18s, transform 0.18s;
+  }
+  .member-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .member-card-women { border-left-color: var(--burgundy-mid); }
+  .member-name { font-weight: 700; font-size: 0.95rem; color: var(--text-dark); line-height: 1.3; }
+  .member-reading { font-size: 0.68rem; color: var(--text-light); margin: 2px 0 7px; line-height: 1.4; letter-spacing: 0.03em; }
+  .member-dept { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.04em; }
+  .dept-men   { background: var(--green-pale);    color: var(--green-dark); }
+  .dept-women { background: var(--burgundy-pale); color: var(--burgundy); }
+
+  /* ── SHINKAN FLOATING POPUP ── */
+  .shinkan-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 800;
+    width: 270px;
+    background: linear-gradient(155deg, #3d1c1c 0%, #5c2a2a 100%);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(92,42,42,0.4);
+    padding: 20px 20px 18px;
+    animation: floatIn 0.5s 0.6s both cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+  }
+  .shinkan-float-close {
+    position: absolute; top: 10px; right: 12px;
+    background: none; border: none; color: rgba(255,255,255,0.35);
+    font-size: 1.1rem; cursor: pointer; line-height: 1; padding: 2px 4px;
+    transition: color 0.15s;
+  }
+  .shinkan-float-close:hover { color: rgba(255,255,255,0.8); }
+  .shinkan-float-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .shinkan-float-icon {
+    flex-shrink: 0; width: 32px; height: 32px; color: rgba(255,255,255,0.5);
+  }
+  .shinkan-float-icon svg { width: 100%; height: 100%; }
+  .shinkan-float-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.62rem;
+    letter-spacing: 0.24em; color: rgba(255,255,255,0.45);
+  }
+  .shinkan-float-body { margin-bottom: 16px; }
+  .shinkan-float-title {
+    font-size: 0.92rem; font-weight: 900; color: var(--white);
+    line-height: 1.55; letter-spacing: 0.02em;
+  }
+  .shinkan-float-desc {
+    font-size: 0.74rem; color: rgba(255,255,255,0.58);
+    line-height: 1.65; margin-top: 6px; letter-spacing: 0.01em;
+  }
+  .shinkan-float-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 10px 0; border-radius: 6px;
+    background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.28);
+    color: var(--white); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .shinkan-float-btn:hover {
+    background: rgba(255,255,255,0.23); transform: translateY(-2px);
+    box-shadow: 0 5px 16px rgba(92,42,42,0.5);
+  }
+  @media (max-width: 480px) {
+    .shinkan-float { bottom: 16px; right: 16px; width: calc(100vw - 32px); max-width: 300px; }
+    .logo-title-jp { display: none; }
+    .logo-nu-icon { width: 36px; height: 36px; }
+    .hdr-btn { padding: 5px 8px; font-size: 0.68rem; }
+    .page-hero { padding: 26px 14px 20px; }
+    .page-hero-title-jp { letter-spacing: 0.06em; }
+    .section-title { font-size: 1.15rem; }
+    footer { padding: 22px 14px; font-size: 0.72rem; line-height: 2; }
+    .footer-logo { font-size: 1.2rem; }
+  }
+
+  /* ── FOOTER ── */
+  footer { background: #111e17; color: rgba(255,255,255,0.55); text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 2.2; border-top: 3px solid var(--burgundy); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--green-light); letter-spacing: 0.12em; display: block; margin-bottom: 4px; }
+  .footer-sub { color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.04em; }
+  footer a { color: var(--green-light); }
+  .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.12); margin: 16px auto; }
+  .footer-links { display: flex; gap: 18px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 4px 0 0; }
+  .footer-links button { background: none; border: none; color: rgba(255,255,255,0.38); font-size: 0.72rem; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; font-family: inherit; }
+  .footer-links button:hover { color: rgba(255,255,255,0.75); }
+
+  /* ── Page hero entrance ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .page-hero-title-jp { animation: fadeUp 0.65s 0.12s both; }
+  .page-hero-title-en { animation: fadeUp 0.5s  0.30s both; }
+  .breadcrumb         { animation: fadeUp 0.45s 0.44s both; }
+  @media (prefers-reduced-motion: reduce) { .page-hero-title-jp, .page-hero-title-en, .breadcrumb { animation: none; } }
+
+  @media (max-width: 860px) {
+    .content-wrap { grid-template-columns: 1fr; }
+    .member-sidebar { display: none; }
+    .main-content { grid-column: 1; }
+  }
+  @media (max-width: 768px) {
+    .main-content { padding: 40px 18px; }
+    .page-hero { padding: 40px 18px 34px; }
+
+    .member-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); }
+    .team-tab { padding: 11px 32px; font-size: 0.88rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <img src="../images/nu_logo_transparent.png" alt="名大ロゴ" class="logo-nu-icon" />
+      <span class="logo-title-jp">名古屋大学</span>
+    </a>
+    <div class="header-shortcuts">
+      <a href="../other/index.html" class="hdr-btn hdr-btn-primary">新入生・新歓情報</a>
+      <a href="../plan/index.html"  class="hdr-btn hdr-btn-outline">活動計画</a>
+    </div>
+  </div>
+</header>
+
+<!-- IDENTITY STRIPE -->
+<div class="identity-stripe">
+  <a href="../member/index.html" class="stripe-nav-btn active"><span class="stripe-en">MEMBERS</span><span class="stripe-jp">部員紹介</span></a>
+  <a href="../result/index.html"  class="stripe-nav-btn"><span class="stripe-en">RESULTS</span><span class="stripe-jp">試合結果</span></a>
+  <a href="../gallery/index.html" class="stripe-nav-btn"><span class="stripe-en">GALLERY</span><span class="stripe-jp">ギャラリー</span></a>
+  <a href="http://nuvc.bbs.fc2.com/" target="_blank" class="stripe-nav-btn"><span class="stripe-en">BULLETIN BOARD</span><span class="stripe-jp">掲示板</span></a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-title-jp">部員紹介</div>
+    <div class="page-hero-title-en">MEMBERS</div>
+    <div class="breadcrumb">
+      <a href="../index.html">ホーム</a><span>›</span>部員紹介
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT GRID -->
+<div class="content-wrap">
+
+  <!-- SIDEBAR -->
+  <nav class="member-sidebar">
+    <!-- Men sidebar (shown by default) -->
+    <div id="sidebar-men">
+      <div class="sidebar-section-label">プレーヤー</div>
+      <button class="sidebar-link active-grade" onclick="jumpTo('m-p-4')">4年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-p-3')">3年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-p-2')">2年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-p-1')">1年生</button>
+      <div class="sidebar-section-label">マネージャー</div>
+      <button class="sidebar-link" onclick="jumpTo('m-mgr-3')">3年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-mgr-2')">2年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-mgr-1')">1年生</button>
+    </div>
+    <!-- Women sidebar (hidden until tab switch) -->
+    <div id="sidebar-women" style="display:none">
+      <div class="sidebar-section-label">プレーヤー</div>
+      <button class="sidebar-link" onclick="jumpTo('w-p-4')">4年生</button>
+      <button class="sidebar-link" onclick="jumpTo('w-p-3')">3年生</button>
+      <button class="sidebar-link" onclick="jumpTo('w-p-2')">2年生</button>
+      <button class="sidebar-link" onclick="jumpTo('w-p-1')">1年生</button>
+      <div class="sidebar-section-label">マネージャー</div>
+      <button class="sidebar-link" onclick="jumpTo('w-mgr-4')">4年生</button>
+      <button class="sidebar-link" onclick="jumpTo('w-mgr-1')">1年生</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- Team tabs -->
+    <div class="team-tabs">
+      <button class="team-tab team-tab-men"            id="tab-men"   onclick="switchTeam('men')">男子部</button>
+      <button class="team-tab team-tab-women inactive" id="tab-women" onclick="switchTeam('women')">女子部</button>
+    </div>
+
+    <!-- ════════════════ 男子部 ════════════════ -->
+    <div id="men-panel">
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">MEN'S TEAM</p>
+          <h2 class="section-title">男子部</h2>
+        </div>
+        <div class="section-role-badge">
+          <span class="section-role-en">PLAYERS</span>
+          <span class="section-role-jp">プレーヤー</span>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-p-4">
+        <span class="year-label year-label-men">4年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">佐藤圭悟</div><div class="member-reading">さとうけいご</div><span class="member-dept dept-men">教育学部</span></div>
+          <div class="member-card"><div class="member-name">鈴木広人</div><div class="member-reading">すずきひろと</div><span class="member-dept dept-men">理学部</span></div>
+          <div class="member-card"><div class="member-name">高枝駿</div><div class="member-reading">たかえだしゅん</div><span class="member-dept dept-men">農学部</span></div>
+          <div class="member-card"><div class="member-name">高見拓登</div><div class="member-reading">たかみたくと</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">谷口蒼太</div><div class="member-reading">たにぐちそうた</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">鄭穎</div><div class="member-reading">ていえい</div><span class="member-dept dept-men">農学部</span></div>
+          <div class="member-card"><div class="member-name">平野智紀</div><div class="member-reading">ひらのとものり</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">藤城光祐</div><div class="member-reading">ふじしろこうすけ</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">渡邊智也</div><div class="member-reading">わたなべともや</div><span class="member-dept dept-men">工学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-p-3">
+        <span class="year-label year-label-men">3年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">塚原明生</div><div class="member-reading">つかはらあきみ</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">渡会晄大</div><div class="member-reading">わたらいこうた</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">酒匂大志</div><div class="member-reading">さこうたいし</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">河原圭</div><div class="member-reading">かわはらけい</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">高林人和</div><div class="member-reading">たかばやしとわ</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">平野匡輝</div><div class="member-reading">ひらのまさき</div><span class="member-dept dept-men">法学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-p-2">
+        <span class="year-label year-label-men">2年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">市川敦士</div><div class="member-reading">いちかわあつし</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">賀山大星</div><div class="member-reading">かやまたいせい</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">城晴透</div><div class="member-reading">じょうはると</div><span class="member-dept dept-men">理学部</span></div>
+          <div class="member-card"><div class="member-name">武井洸生</div><div class="member-reading">たけいこうき</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">邱子元</div><div class="member-reading">ちょうつゆあん</div><span class="member-dept dept-men">理学部</span></div>
+          <div class="member-card"><div class="member-name">西田周太</div><div class="member-reading">にしだしゅうた</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">野村真怜</div><div class="member-reading">のむらまさと</div><span class="member-dept dept-men">理学部</span></div>
+          <div class="member-card"><div class="member-name">畑佐美久斗</div><div class="member-reading">はたさみくと</div><span class="member-dept dept-men">工学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-p-1">
+        <span class="year-label year-label-men">1年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">佐藤隼斗</div><div class="member-reading">さとうはやと</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">西牟田康太</div><div class="member-reading">にしむたこうた</div><span class="member-dept dept-men">情報学部</span></div>
+          <div class="member-card"><div class="member-name">渡辺賢人</div><div class="member-reading">わたなべけんと</div><span class="member-dept dept-men">情報学部</span></div>
+          <div class="member-card"><div class="member-name">加納光裕</div><div class="member-reading">かのうみつひろ</div><span class="member-dept dept-men">法学部</span></div>
+          <div class="member-card"><div class="member-name">森智哉</div><div class="member-reading">もりともや</div><span class="member-dept dept-men">法学部</span></div>
+          <div class="member-card"><div class="member-name">大羽雄介</div><div class="member-reading">おおばゆうすけ</div><span class="member-dept dept-men">理学部</span></div>
+          <div class="member-card"><div class="member-name">横山朝陽</div><div class="member-reading">よこやまあさひ</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">森下友多郎</div><div class="member-reading">もりしたゆうたろう</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">松尾友生</div><div class="member-reading">まつおともき</div><span class="member-dept dept-men">経済学部</span></div>
+        </div>
+      </div>
+
+      <div class="section-header-row" style="margin-top: 44px;">
+        <div>
+          <p class="section-label">MEN'S TEAM</p>
+          <h2 class="section-title">男子部</h2>
+        </div>
+        <div class="section-role-badge">
+          <span class="section-role-en">MANAGERS</span>
+          <span class="section-role-jp">マネージャー</span>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-mgr-3">
+        <span class="year-label year-label-men">3年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">小川璃子</div><div class="member-reading">おがわりこ</div><span class="member-dept dept-men">医学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-mgr-2">
+        <span class="year-label year-label-men">2年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">大池萌佳</div><div class="member-reading">おおいけもえか</div><span class="member-dept dept-men">工学部</span></div>
+          <div class="member-card"><div class="member-name">鈴木悠愛</div><div class="member-reading">すずきゆあ</div><span class="member-dept dept-men">工学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-mgr-1">
+        <span class="year-label year-label-men">1年生</span>
+        <div class="member-grid">
+          <div class="member-card"><div class="member-name">安立有杏</div><div class="member-reading">あだちゆあん</div><span class="member-dept dept-men">経済学部</span></div>
+          <div class="member-card"><div class="member-name">本田遥</div><div class="member-reading">ほんだはるか</div><span class="member-dept dept-men">農学部</span></div>
+          <div class="member-card"><div class="member-name">末竹みちる</div><div class="member-reading">すえたけみちる</div><span class="member-dept dept-men">医学部</span></div>
+        </div>
+      </div>
+    </div><!-- /men-panel -->
+
+    <!-- ════════════════ 女子部 ════════════════ -->
+    <div id="women-panel" style="display:none">
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">WOMEN'S TEAM</p>
+          <h2 class="section-title" style="color: var(--burgundy);">女子部</h2>
+        </div>
+        <div class="section-role-badge">
+          <span class="section-role-en section-role-en-women">PLAYERS</span>
+          <span class="section-role-jp">プレーヤー</span>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-p-4">
+        <span class="year-label year-label-women">4年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">西田萌々果（なる）</div><div class="member-reading">にしだももか</div><span class="member-dept dept-women">経済学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-p-3">
+        <span class="year-label year-label-women">3年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">水野双葉（りい）</div><div class="member-reading">みずのふたば</div><span class="member-dept dept-women">情報学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">市川朝日香（ちい）</div><div class="member-reading">いちかわあすか</div><span class="member-dept dept-women">法学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-p-2">
+        <span class="year-label year-label-women">2年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">吉崎聖菜（とむ）</div><div class="member-reading">よしざきせな</div><span class="member-dept dept-women">医学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">中野沙弥（せん）</div><div class="member-reading">なかのさや</div><span class="member-dept dept-women">経済学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">木下亜美（るん）</div><div class="member-reading">きのしたあみ</div><span class="member-dept dept-women">医学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">陳昭燁（やく）</div><div class="member-reading">ちんしょうやく</div><span class="member-dept dept-women">情報学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">新田紗千（あに）</div><div class="member-reading">にったさち</div><span class="member-dept dept-women">農学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">森唯奈（しの）</div><div class="member-reading">もりゆいな</div><span class="member-dept dept-women">経済学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">土屋萌（つき）</div><div class="member-reading">つちやもえ</div><span class="member-dept dept-women">医学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">太田渚桜（りお）</div><div class="member-reading">おおたなぎさ</div><span class="member-dept dept-women">医学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">ネタニアクリスタ（にか）</div><div class="member-reading">ねたにあくりすた</div><span class="member-dept dept-women">法学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">ファムダオフォンウェン（いん）</div><div class="member-reading">ふぁむだおふぁんうぇん</div><span class="member-dept dept-women">経済学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-p-1">
+        <span class="year-label year-label-women">1年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">藤原柑奈（かん）</div><div class="member-reading">ふじわらかんな</div><span class="member-dept dept-women">文学部</span></div>
+          <div class="member-card member-card-women"><div class="member-name">松下愛梨（さく）</div><div class="member-reading">まつしたあいり</div><span class="member-dept dept-women">法学部</span></div>
+        </div>
+      </div>
+
+      <div class="section-header-row" style="margin-top: 44px;">
+        <div>
+          <p class="section-label">WOMEN'S TEAM</p>
+          <h2 class="section-title" style="color: var(--burgundy);">女子部</h2>
+        </div>
+        <div class="section-role-badge">
+          <span class="section-role-en section-role-en-women">MANAGERS</span>
+          <span class="section-role-jp">マネージャー</span>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-mgr-4">
+        <span class="year-label year-label-women">4年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">服部結季乃（きい）</div><div class="member-reading">はっとりゆきの</div><span class="member-dept dept-women">教育学部</span></div>
+        </div>
+      </div>
+
+      <div class="year-block" id="w-mgr-1">
+        <span class="year-label year-label-women">1年生</span>
+        <div class="member-grid">
+          <div class="member-card member-card-women"><div class="member-name">三波凪紗（まる）</div><div class="member-reading">さんなみなぎさ</div><span class="member-dept dept-women">医学部</span></div>
+        </div>
+      </div>
+    </div><!-- /women-panel -->
+
+
+  </div><!-- /main-content -->
+</div><!-- /content-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">NUVC</span>
+  <div class="footer-sub">名古屋大学体育会バレーボール部</div>
+  <div class="footer-divider"></div>
+  <div style="font-size:0.78rem; color:rgba(255,255,255,0.4); line-height:1.8;">
+    〒464-0814 愛知県名古屋市千種区不老町 名古屋大学
+  </div>
+  <div class="footer-links">
+    <button onclick="openTos()">利用規約</button>
+  </div>
+  <div style="margin-top:16px; font-size:0.72rem; color:rgba(255,255,255,0.25);">&copy; 名古屋大学バレーボール部 All Rights Reserved.</div>
+</footer>
+
+<!-- TOS MODAL -->
+<div id="tos-overlay" class="tos-overlay" onclick="closeTos()">
+  <div class="tos-modal" onclick="event.stopPropagation()">
+    <button class="tos-close" onclick="closeTos()" aria-label="閉じる">&times;</button>
+    <h2 class="tos-title">利用規約</h2>
+    <div class="tos-body">
+      <p class="tos-updated">最終更新日：2025年4月1日</p>
+      <h3>第1条（適用）</h3>
+      <p>本利用規約（以下「本規約」）は、名古屋大学体育会バレーボール部（以下「当部」）が運営するウェブサイト（以下「本サイト」）の利用条件を定めるものです。本サイトを閲覧・利用するすべての方（以下「利用者」）は、本規約に同意したものとみなします。</p>
+      <h3>第2条（知的財産権）</h3>
+      <p>本サイトに掲載されているテキスト・画像・映像・デザイン・ロゴ等のコンテンツの著作権は、当部または正当な権利を有する第三者に帰属します。利用者は、当部の事前の書面による許可なく、これらのコンテンツを複製・転載・改変・再配布することはできません。</p>
+      <h3>第3条（禁止事項）</h3>
+      <p>利用者は、本サイトの利用にあたり、以下の行為を行ってはなりません。</p>
+      <ul>
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当部または第三者の権利・利益を侵害する行為</li>
+        <li>本サイトのサーバーまたはネットワークに過大な負荷をかける行為</li>
+        <li>本サイトの運営を妨害するおそれのある行為</li>
+        <li>その他、当部が不適切と判断する行為</li>
+      </ul>
+      <h3>第4条（外部リンク）</h3>
+      <p>本サイトには外部サイトへのリンクが含まれる場合があります。当部はリンク先の内容・運営について一切の責任を負いません。外部サイトの利用は利用者自身の判断と責任において行ってください。</p>
+      <h3>第5条（免責事項）</h3>
+      <p>当部は、本サイトに掲載する情報の正確性・完全性・有用性について、可能な限り正確な情報を提供するよう努めますが、その内容を保証するものではありません。本サイトの利用により生じた損害について、当部は一切の責任を負いかねます。また、予告なく情報を変更・削除することがあります。</p>
+      <h3>第6条（プライバシー）</h3>
+      <p>当部は、本サイトを通じて取得した個人情報を、お問い合わせへの回答・活動案内の送付など必要な範囲でのみ利用し、法令に基づく場合を除き第三者に提供しません。本サイトはアクセス解析のためCookieを使用することがあります。</p>
+      <h3>第7条（写真・動画の掲載）</h3>
+      <p>本サイトに掲載する部員・関係者の写真・動画は、本人の同意を得た上で使用しています。掲載内容に関するご要望は、当部の公式SNSまたは顧問教員を通じてお問い合わせください。</p>
+      <h3>第8条（規約の変更）</h3>
+      <p>当部は、必要に応じて本規約を変更することがあります。変更後の規約は本サイトへの掲載をもって効力を生じるものとし、利用者はこれに同意したものとみなします。</p>
+      <h3>第9条（準拠法・管轄）</h3>
+      <p>本規約の解釈および適用は日本法に準拠するものとし、本サイトに関する紛争については名古屋地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+      <h3>お問い合わせ</h3>
+      <p>本規約に関するお問い合わせは、当部の公式SNSアカウントまたは顧問教員を通じてご連絡ください。</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.tos-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9000; align-items: center; justify-content: center; padding: 20px; }
+.tos-overlay.open { display: flex; }
+.tos-modal { background: #fff; color: #222; border-radius: 10px; max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 40px 36px 36px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.tos-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #666; line-height: 1; }
+.tos-close:hover { color: #222; }
+.tos-title { font-size: 1.3rem; font-weight: 800; margin: 0 0 6px; color: #1a1a1a; }
+.tos-updated { font-size: 0.75rem; color: #888; margin: 0 0 24px; }
+.tos-body h3 { font-size: 0.9rem; font-weight: 700; color: #1a1a1a; margin: 20px 0 6px; }
+.tos-body p, .tos-body ul { font-size: 0.84rem; color: #444; line-height: 1.75; margin: 0 0 8px; }
+.tos-body ul { padding-left: 1.4em; }
+.tos-body li { margin-bottom: 4px; }
+</style>
+
+<script>
+/* ── Team tab switching ── */
+var currentTeam = 'men';
+function switchTeam(team) {
+  currentTeam = team;
+  document.getElementById('men-panel').style.display   = team === 'men'   ? '' : 'none';
+  document.getElementById('women-panel').style.display = team === 'women' ? '' : 'none';
+  document.getElementById('sidebar-men').style.display   = team === 'men'   ? '' : 'none';
+  document.getElementById('sidebar-women').style.display = team === 'women' ? '' : 'none';
+  document.getElementById('tab-men').classList.toggle('inactive',   team !== 'men');
+  document.getElementById('tab-women').classList.toggle('inactive', team !== 'women');
+  // Reset sidebar highlights
+  var activeClass = team === 'men' ? 'active-grade' : 'active-grade-women';
+  document.querySelectorAll('#sidebar-' + team + ' .sidebar-link').forEach(function(el, i) {
+    el.classList.remove('active-grade', 'active-grade-women');
+    if (i === 0) el.classList.add(activeClass);
+  });
+  // Scroll to top of panel
+  window.scrollTo({ top: document.querySelector('.page-hero').offsetTop, behavior: 'smooth' });
+}
+
+/* ── Jump to year block ── */
+function jumpTo(blockId) {
+  var el = document.getElementById(blockId);
+  if (!el) return;
+  var offset = 84 + 16;
+  var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+}
+
+/* ── Sidebar highlight on scroll ── */
+(function() {
+  var allBlocks = [
+    { id: 'm-p-4', team: 'men' }, { id: 'm-p-3', team: 'men' },
+    { id: 'm-p-2', team: 'men' }, { id: 'm-p-1', team: 'men' },
+    { id: 'm-mgr-3', team: 'men' }, { id: 'm-mgr-2', team: 'men' },
+    { id: 'm-mgr-1', team: 'men' },
+    { id: 'w-p-4', team: 'women' }, { id: 'w-p-3', team: 'women' },
+    { id: 'w-p-2', team: 'women' }, { id: 'w-p-1', team: 'women' },
+    { id: 'w-mgr-4', team: 'women' }, { id: 'w-mgr-1', team: 'women' }
+  ];
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var blockId = entry.target.id;
+      var teamInfo = allBlocks.find(function(b) { return b.id === blockId; });
+      if (!teamInfo || teamInfo.team !== currentTeam) return;
+
+      var sidebarId = 'sidebar-' + teamInfo.team;
+      var activeClass = teamInfo.team === 'men' ? 'active-grade' : 'active-grade-women';
+      document.querySelectorAll('#' + sidebarId + ' .sidebar-link').forEach(function(el) {
+        el.classList.remove('active-grade', 'active-grade-women');
+      });
+      var matchingBtn = document.querySelector('#' + sidebarId + ' .sidebar-link[onclick="jumpTo(\'' + blockId + '\')"]');
+      if (matchingBtn) matchingBtn.classList.add(activeClass);
+    });
+  }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
+
+  allBlocks.forEach(function(b) {
+    var el = document.getElementById(b.id);
+    if (el) observer.observe(el);
+  });
+})();
+
+/* ── ToS modal ── */
+function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTos(); });
+</script>
+
+<!-- SHINKAN FLOATING POPUP -->
+<div class="shinkan-float" id="shinkan-float">
+  <button class="shinkan-float-close" onclick="document.getElementById('shinkan-float').style.display='none'" aria-label="閉じる">&times;</button>
+  <div class="shinkan-float-header">
+    <div class="shinkan-float-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <span class="shinkan-float-label">SHINKAN INSTAGRAM</span>
+  </div>
+  <div class="shinkan-float-body">
+    <p class="shinkan-float-title">部員のことをもっと詳しく知りたい方へ</p>
+    <p class="shinkan-float-desc">新歓公式 Instagram では、部員一人ひとりの紹介を掲載しています。ぜひご覧ください。</p>
+  </div>
+  <a href="https://www.instagram.com/nagoya_volley_2026_/" target="_blank" class="shinkan-float-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    新歓 Instagram を見る
+  </a>
+</div>
+
+</body>
+</html>

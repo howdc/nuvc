@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1998年度 七大戦 1 — 名古屋大学バレーボール部 NUVC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{--green-dark:#1a3d2b;--green-main:#2d6a4f;--green-mid:#40916c;--green-light:#74c69d;--green-pale:#e8f5ec;--burgundy:#5c2a2a;--burgundy-mid:#7a3838;--white:#ffffff;--off-white:#f8f8f6;--text-dark:#0f2318;--text-mid:#3a4a3f;--text-light:#6b7d72;--border:#d0ddd5;--shadow-sm:0 2px 10px rgba(26,61,43,.10);--shadow:0 4px 24px rgba(26,61,43,.12);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--off-white);color:var(--text-dark);font-size:15px;line-height:1.8;}
+  img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+  header{background:var(--green-dark);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.3);}
+  .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;gap:16px;}
+  .header-shortcuts{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+  .hdr-btn{display:inline-block;padding:6px 14px;border-radius:3px;font-size:.75rem;font-weight:700;white-space:nowrap;transition:background .18s,transform .18s;}
+  .hdr-btn:hover{transform:translateY(-1px);}
+  .hdr-btn-primary{background:var(--burgundy);color:var(--white);border:1px solid var(--burgundy-mid);}
+  .hdr-btn-primary:hover{background:var(--burgundy-mid);}
+  .hdr-btn-outline{background:transparent;color:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.28);}
+  .hdr-btn-outline:hover{background:rgba(255,255,255,.08);color:var(--white);}
+  @media(max-width:540px){.header-shortcuts{display:none;}}
+  .logo{display:flex;align-items:center;gap:14px;color:var(--white);}
+  .logo-nu-icon{width:50px;height:50px;opacity:.92;filter:brightness(0) invert(1);transition:transform .3s,filter .3s;}
+  .logo:hover .logo-nu-icon{transform:rotate(-6deg) scale(1.08);filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(116,198,157,.5));}
+  .logo-title-jp{font-size:1.05rem;font-weight:700;color:rgba(255,255,255,.88);letter-spacing:.06em;}
+  .identity-stripe{background:var(--burgundy);display:flex;align-items:stretch;justify-content:center;flex-wrap:nowrap;}
+  .stripe-nav-btn{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.88);font-size:clamp(.58rem,1.4vw,.82rem);font-weight:700;border-right:1px solid rgba(255,255,255,.1);transition:background .18s,color .18s;white-space:nowrap;flex:1;min-width:0;flex-direction:column;gap:2px;padding:clamp(8px,1.2vw,10px) clamp(6px,1.5vw,20px);}
+  .stripe-nav-btn:last-child{border-right:none;}
+  .stripe-nav-btn:hover,.stripe-nav-btn.active{background:var(--burgundy-mid);color:var(--white);}
+  .stripe-nav-btn .stripe-en{font-family:'Bebas Neue',sans-serif;font-size:clamp(.48rem,1vw,.65rem);letter-spacing:.12em;color:rgba(255,255,255,.5);}
+  .stripe-nav-btn .stripe-jp{font-size:clamp(.58rem,1.4vw,.82rem);font-weight:700;color:rgba(255,255,255,.92);}
+  .page-hero{background:linear-gradient(155deg,var(--green-dark) 0%,#1e4532 55%,var(--green-main) 100%);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(-48deg,transparent 0,transparent 34px,rgba(255,255,255,.014) 34px,rgba(255,255,255,.014) 36px);}
+  .page-hero-content{position:relative;z-index:2;}
+  .page-hero-year{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.3em;color:rgba(255,255,255,.45);margin-bottom:4px;}
+  .page-hero-title{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;color:var(--white);letter-spacing:.1em;text-shadow:2px 2px 0 rgba(0,0,0,.35);margin-bottom:4px;}
+  .page-hero-subtitle-text{font-size:.85rem;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:6px;}
+  .breadcrumb{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:14px;}
+  .breadcrumb a{color:rgba(255,255,255,.55);} .breadcrumb a:hover{color:var(--white);} .breadcrumb span{margin:0 6px;}
+  .section{max-width:1100px;margin:0 auto;padding:48px 24px 64px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--text-light);margin-bottom:24px;padding:8px 16px;border:1.5px solid var(--border);border-radius:4px;transition:border-color .18s,color .18s;}
+  .back-link:hover{border-color:var(--green-mid);color:var(--green-dark);}
+  .album-meta{font-size:.8rem;color:var(--text-light);margin-bottom:20px;}
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+  .photo-item{border-radius:6px;overflow:hidden;background:#000;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;aspect-ratio:4/3;}
+  .photo-item:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+  .photo-item a{display:block;width:100%;height:100%;}
+  .photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s;}
+  .photo-item:hover img{opacity:.88;}
+  .no-photos{background:var(--green-pale);border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;color:var(--text-light);font-size:.9rem;}
+  .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;}
+  .lb-overlay.open{display:flex;}
+  .lb-inner{position:relative;max-width:min(92vw,1200px);max-height:90vh;display:flex;align-items:center;justify-content:center;}
+  .lb-inner img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:4px;box-shadow:0 8px 48px rgba(0,0,0,.6);cursor:default;}
+  .lb-close{position:fixed;top:16px;right:20px;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:1.8rem;line-height:1;padding:4px 12px;border-radius:4px;cursor:pointer;transition:background .18s;}
+  .lb-close:hover{background:rgba(255,255,255,.25);}
+  .lb-counter{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.8rem;letter-spacing:.1em;}
+  .lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.6rem;padding:12px 16px;border-radius:4px;cursor:pointer;transition:background .18s;}
+  .lb-prev{left:12px;} .lb-next{right:12px;}
+  .lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.25);}
+  footer{background:#111e17;color:rgba(255,255,255,.55);text-align:center;padding:40px 24px;font-size:.8rem;line-height:2.2;border-top:3px solid var(--burgundy);}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--green-light);letter-spacing:.12em;display:block;margin-bottom:4px;}
+  .footer-sub{color:rgba(255,255,255,.4);font-size:.72rem;}
+  .footer-divider{width:40px;height:1px;background:rgba(255,255,255,.12);margin:16px auto;}
+  .tos-link{background:none;border:none;color:rgba(255,255,255,.45);font-size:.78rem;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;transition:color .2s;}
+  .tos-link:hover{color:rgba(255,255,255,.8);}
+  .tos-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9000;align-items:center;justify-content:center;padding:20px;}
+  .tos-overlay.open{display:flex;}
+  .tos-modal{background:#fff;color:#222;border-radius:10px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:36px 32px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .tos-close-btn{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#666;}
+  .tos-title{font-size:1.2rem;font-weight:800;margin:0 0 6px;}
+  .tos-updated{font-size:.75rem;color:#888;margin:0 0 20px;}
+  .tos-body h3{font-size:.88rem;font-weight:700;margin:16px 0 4px;}
+  .tos-body p{font-size:.82rem;color:#444;line-height:1.7;margin:0 0 8px;}
+  @media(max-width:640px){.section{padding:32px 16px 48px;}.page-hero{padding:36px 18px 30px;}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:5px;}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+  .page-hero-title{animation:fadeUp .65s .12s both;}
+  .page-hero-subtitle-text{animation:fadeUp .5s .28s both;}
+  .breadcrumb{animation:fadeUp .45s .40s both;}
+  @media(prefers-reduced-motion:reduce){.page-hero-title,.page-hero-subtitle-text,.breadcrumb{animation:none;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">
+      <img src="../../images/nu_logo_transparent.png" alt="名大ロゴ" class="logo-nu-icon" />
+      <span class="logo-title-jp">名古屋大学</span>
+    </a>
+    <div class="header-shortcuts">
+      <a href="../../other/index.html" class="hdr-btn hdr-btn-primary">新入生・新歓情報</a>
+      <a href="../../plan/index.html" class="hdr-btn hdr-btn-outline">活動計画</a>
+    </div>
+  </div>
+</header>
+<div class="identity-stripe">
+  <a href="../../member/index.html" class="stripe-nav-btn"><span class="stripe-en">MEMBERS</span><span class="stripe-jp">部員紹介</span></a>
+  <a href="../../result/index.html" class="stripe-nav-btn"><span class="stripe-en">RESULTS</span><span class="stripe-jp">試合結果</span></a>
+  <a href="../../gallery/index.html" class="stripe-nav-btn active"><span class="stripe-en">GALLERY</span><span class="stripe-jp">ギャラリー</span></a>
+  <a href="http://nuvc.bbs.fc2.com/" target="_blank" class="stripe-nav-btn"><span class="stripe-en">BULLETIN BOARD</span><span class="stripe-jp">掲示板</span></a>
+</div>
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-year">1998</div>
+    <div class="page-hero-title">七大戦 1</div>
+    
+    <div class="breadcrumb">
+      <a href="../../index.html">ホーム</a><span>›</span>
+      <a href="../index.html">ギャラリー</a><span>›</span>
+      七大戦 1
+    </div>
+  </div>
+</div>
+<div class="section">
+  <a href="../index.html" class="back-link">← ギャラリーへ戻る</a>
+  
+  <div class="no-photos"><p>このアルバムの写真は現在利用できません。</p></div>
+</div>
+<footer>
+  <span class="footer-logo">NUVC</span>
+  <div class="footer-sub">名古屋大学体育会バレーボール部</div>
+  <div class="footer-divider"></div>
+  〒464-0814 愛知県名古屋市千種区不老町 名古屋大学<br>
+  <button class="tos-link" onclick="openTos()">利用規約</button><br><br>
+  <span style="font-size:.72rem;color:rgba(255,255,255,.3);">&copy; 名古屋大学バレーボール部 All Rights Reserved.</span>
+</footer>
+<div id="lb-overlay" class="lb-overlay" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLB()">&times;</button>
+  <button class="lb-prev" onclick="lbNav(-1);event.stopPropagation()">&#8249;</button>
+  <div class="lb-inner" onclick="event.stopPropagation()"><img id="lb-img" src="" alt="" /></div>
+  <button class="lb-next" onclick="lbNav(1);event.stopPropagation()">&#8250;</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+<div id="tos-overlay" class="tos-overlay" onclick="closeTos()">
+  <div class="tos-modal" onclick="event.stopPropagation()">
+    <button class="tos-close-btn" onclick="closeTos()">&times;</button>
+    <h2 class="tos-title">利用規約</h2>
+    <div class="tos-body">
+      <p class="tos-updated">最終更新日：2025年4月1日</p>
+      <h3>第1条（適用）</h3><p>本利用規約は、名古屋大学体育会バレーボール部が運営するウェブサイトの利用条件を定めるものです。</p>
+      <h3>第2条（知的財産権）</h3><p>本サイトのコンテンツの著作権は当部または正当な権利を有する第三者に帰属します。</p>
+      <h3>第3条（禁止事項）</h3><p>法令違反・権利侵害・過大な負荷をかける行為等は禁止します。</p>
+      <h3>第4条（免責事項）</h3><p>本サイト利用により生じた損害について、当部は責任を負いかねます。</p>
+      <h3>第5条（規約の変更）</h3><p>当部は必要に応じて本規約を変更することがあります。</p>
+    </div>
+  </div>
+</div>
+<script>
+var lbSrcs=[],lbIdx=0;
+function openLB(src){lbIdx=lbSrcs.indexOf(src);if(lbIdx<0)lbIdx=0;showLB();document.getElementById('lb-overlay').classList.add('open');document.body.style.overflow='hidden';}
+function showLB(){document.getElementById('lb-img').src=lbSrcs[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbSrcs.length;}
+function closeLB(e){if(e&&e.target!==document.getElementById('lb-overlay'))return;document.getElementById('lb-overlay').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbIdx=(lbIdx+d+lbSrcs.length)%lbSrcs.length;showLB();}
+function openTos(){document.getElementById('tos-overlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeTos(){document.getElementById('tos-overlay').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){
+  var lb=document.getElementById('lb-overlay');
+  if(lb.classList.contains('open')){if(e.key==='Escape'){lb.classList.remove('open');document.body.style.overflow='';}if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);}
+  else{if(e.key==='Escape')closeTos();}
+});
+</script>
+</body>
+</html>

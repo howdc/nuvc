@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>活動計画 — 名古屋大学バレーボール部 NUVC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1a3d2b;
+    --green-main:   #2d6a4f;
+    --green-mid:    #40916c;
+    --green-light:  #74c69d;
+    --green-pale:   #e8f5ec;
+    --burgundy:     #5c2a2a;
+    --burgundy-mid: #7a3838;
+    --burgundy-pale:#f0e6e6;
+    --white:        #ffffff;
+    --off-white:    #f8f8f6;
+    --text-dark:    #0f2318;
+    --text-mid:     #3a4a3f;
+    --text-light:   #6b7d72;
+    --border:       #d0ddd5;
+    --shadow-sm:    0 2px 10px rgba(26,61,43,0.10);
+    --shadow:       0 4px 24px rgba(26,61,43,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--off-white); color: var(--text-dark); font-size: 15px; line-height: 1.8; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HEADER ── */
+  header { background: var(--green-dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; gap: 16px; }
+  .header-shortcuts { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .hdr-btn { display: inline-block; padding: 6px 14px; border-radius: 3px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; transition: background 0.18s, transform 0.18s; }
+  .hdr-btn:hover { transform: translateY(-1px); }
+  .hdr-btn-primary { background: var(--burgundy); color: var(--white); border: 1px solid var(--burgundy-mid); }
+  .hdr-btn-primary:hover { background: var(--burgundy-mid); }
+  .hdr-btn-outline { background: transparent; color: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.28); }
+  .hdr-btn-outline:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+  .logo { display: flex; align-items: center; gap: 14px; color: var(--white); }
+  .logo-nu-icon { width: 50px; height: 50px; opacity: 0.92; filter: brightness(0) invert(1); transition: transform 0.3s ease, filter 0.3s ease; }
+  .logo:hover .logo-nu-icon { transform: rotate(-6deg) scale(1.08); filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(116,198,157,0.5)); }
+  .logo-title-jp { font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,0.88); letter-spacing: 0.06em; white-space: nowrap; }
+  @media (max-width: 480px) {
+    .logo-title-jp { display: none; }
+    .logo-nu-icon { width: 36px; height: 36px; }
+    .hdr-btn { padding: 5px 8px; font-size: 0.68rem; }
+  }
+
+  /* ── IDENTITY STRIPE ── */
+  .identity-stripe { background: var(--burgundy); display: flex; align-items: stretch; justify-content: center; flex-wrap: nowrap; }
+  .stripe-nav-btn { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.88); font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; letter-spacing: 0.04em; border-right: 1px solid rgba(255,255,255,0.1); transition: background 0.18s, color 0.18s; white-space: nowrap; flex: 1; min-width: 0; flex-direction: column; gap: 2px; padding: clamp(8px, 1.2vw, 10px) clamp(6px, 1.5vw, 20px); }
+  .stripe-nav-btn:last-child { border-right: none; }
+  .stripe-nav-btn:hover { background: var(--burgundy-mid); color: var(--white); }
+  .stripe-nav-btn .stripe-en { font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.48rem, 1vw, 0.65rem); letter-spacing: 0.12em; color: rgba(255,255,255,0.5); }
+  .stripe-nav-btn .stripe-jp { font-size: clamp(0.58rem, 1.4vw, 0.82rem); font-weight: 700; color: rgba(255,255,255,0.92); }
+
+  /* ── PAGE HERO ── */
+  .page-hero { background: linear-gradient(155deg, var(--green-dark) 0%, #1e4532 55%, var(--green-main) 100%); padding: 52px 24px 44px; text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(-48deg, transparent 0px, transparent 34px, rgba(255,255,255,0.014) 34px, rgba(255,255,255,0.014) 36px); }
+  .page-hero-content { position: relative; z-index: 2; }
+  .page-hero-title-jp { font-family: 'Noto Sans JP', sans-serif; font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 900; color: var(--white); letter-spacing: 0.12em; text-shadow: 2px 2px 0 rgba(0,0,0,0.35); margin-bottom: 8px; }
+  .page-hero-title-en { font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.42); }
+  .breadcrumb { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,0.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* ── CONTENT + SIDEBAR LAYOUT ── */
+  /* 3-column grid: [left gutter] [main up to 900px] [right gutter] */
+  .content-wrap { display: grid; grid-template-columns: 1fr min(900px, 100%) 1fr; align-items: start; }
+  .main-content { grid-column: 2; padding: 56px 24px; }
+
+  /* ── STICKY SIDEBAR ── */
+  /* Sidebar sits in the left gutter column, right-aligned so it hugs the main content */
+  .month-sidebar {
+    grid-column: 1;
+    justify-self: end;
+    align-self: start;
+    position: sticky;
+    top: 84px;
+    padding-top: 56px;
+    padding-right: clamp(14px, 2vw, 32px);
+    width: clamp(80px, 10vw, 180px);
+  }
+  .sidebar-year { font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.6rem, 0.7vw, 0.72rem); letter-spacing: 0.22em; color: var(--text-light); margin-bottom: 8px; padding-left: 2px; }
+  .sidebar-group { display: none; flex-direction: column; gap: clamp(3px, 0.4vw, 6px); }
+  .sidebar-group.active { display: flex; }
+  .sidebar-link {
+    display: block; text-align: center;
+    padding: clamp(6px, 0.7vw, 10px) clamp(4px, 1vw, 14px);
+    border-radius: 4px; border: 1px solid transparent;
+    font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+    font-weight: 700; letter-spacing: 0.04em;
+    color: var(--text-light); cursor: pointer; transition: all 0.15s;
+    background: none; font-family: 'Noto Sans JP', sans-serif;
+    width: 100%;
+  }
+  .sidebar-link:hover { background: var(--white); border-color: var(--border); color: var(--text-dark); }
+  .sidebar-link.is-men:hover   { color: var(--green-dark); border-color: var(--green-mid); background: var(--green-pale); }
+  .sidebar-link.is-women:hover { color: var(--burgundy);   border-color: var(--burgundy-mid); background: var(--burgundy-pale); }
+  .sidebar-link.active-month { background: var(--green-pale); border-color: var(--green-mid); color: var(--green-dark); }
+  .sidebar-link.active-month.is-women { background: var(--burgundy-pale); border-color: var(--burgundy-mid); color: var(--burgundy); }
+  .sidebar-link.folded-month { opacity: 0.45; font-style: italic; }
+
+  /* ── SECTION ── */
+  .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--text-light); margin-bottom: 4px; }
+  .section-title { font-size: clamp(1.3rem, 2.8vw, 1.85rem); font-weight: 900; color: var(--green-dark); line-height: 1.2; margin-bottom: 32px; padding-bottom: 14px; border-bottom: 2px solid var(--border); position: relative; }
+  .section-title::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 48px; height: 2px; background: var(--burgundy); }
+
+  /* ── TEAM TABS ── */
+  .team-tabs { display: flex; margin: 0 auto 44px; width: fit-content; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); justify-content: center; }
+  .team-tab { display: block; padding: 12px 52px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.08em; color: var(--white); cursor: pointer; border: none; transition: opacity 0.18s; }
+  .team-tab:hover { opacity: 0.85; }
+  .team-tab-men   { background: var(--green-dark); }
+  .team-tab-women { background: var(--burgundy); }
+  .team-tab.inactive { opacity: 0.42; }
+  .team-tab.inactive:hover { opacity: 0.62; }
+
+  /* ── TEAM PANELS ── */
+  .team-panel { display: none; }
+  .team-panel.active { display: block; }
+
+  /* ── MONTH BLOCK ── */
+  .month-block { margin-bottom: 44px; scroll-margin-top: 84px; }
+  .month-block.folded { display: none; }
+  .month-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .month-tag { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; padding: 5px 18px; border-radius: 2px; color: var(--white); white-space: nowrap; }
+  .month-tag-men   { background: var(--green-dark); }
+  .month-tag-women { background: var(--burgundy); }
+  .month-rule { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── SCHEDULE IMAGE ── */
+  .schedule-img-wrap { background: var(--white); border-radius: 6px; box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--border); }
+  .schedule-img-wrap img { width: 100%; height: auto; display: block; }
+
+  /* ── SHOW MORE BUTTON ── */
+  .show-more-wrap { text-align: center; margin: -16px 0 44px; }
+  .show-more-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 28px; border-radius: 4px; cursor: pointer; border: none; font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; transition: background 0.18s, transform 0.18s; }
+  .show-more-btn:hover { transform: translateY(-1px); }
+  .show-more-btn-men   { background: var(--green-pale); color: var(--green-dark); border: 1px solid var(--border); }
+  .show-more-btn-men:hover { background: var(--green-light); }
+  .show-more-btn-women { background: var(--burgundy-pale); color: var(--burgundy); border: 1px solid var(--border); }
+  .show-more-btn-women:hover { background: #dcc0c0; }
+  .show-more-btn .arrow { display: inline-block; transition: transform 0.2s; font-style: normal; }
+
+  /* ── FOOTER ── */
+  footer { background: #111e17; color: rgba(255,255,255,0.55); text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 2.2; border-top: 3px solid var(--burgundy); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--green-light); letter-spacing: 0.12em; display: block; margin-bottom: 4px; }
+  .footer-sub { color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.04em; }
+  footer a { color: var(--green-light); }
+  .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.12); margin: 16px auto; }
+
+  @media (max-width: 860px) {
+    .content-wrap { grid-template-columns: 1fr; }
+    .month-sidebar { display: none; }
+    .main-content { grid-column: 1; padding: 40px 18px; }
+  }
+  @media (max-width: 540px) {
+    .team-tab { padding: 10px 24px; font-size: 0.84rem; }
+    .main-content { padding: 32px 14px; }
+    .section-title { font-size: 1.15rem; }
+    .page-hero { padding: 26px 14px 20px; }
+    .page-hero-title-jp { letter-spacing: 0.06em; }
+    footer { padding: 22px 14px; font-size: 0.72rem; line-height: 2; }
+    .footer-logo { font-size: 1.2rem; }
+  }
+  /* ── Page hero entrance ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .page-hero-title-jp { animation: fadeUp 0.65s 0.12s both; }
+  .page-hero-title-en { animation: fadeUp 0.5s  0.30s both; }
+  .breadcrumb         { animation: fadeUp 0.45s 0.44s both; }
+  @media (prefers-reduced-motion: reduce) { .page-hero-title-jp, .page-hero-title-en, .breadcrumb { animation: none; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <img src="../images/nu_logo_transparent.png" alt="名大ロゴ" class="logo-nu-icon" />
+      <span class="logo-title-jp">名古屋大学</span>
+    </a>
+    <div class="header-shortcuts">
+      <a href="../other/index.html" class="hdr-btn hdr-btn-primary">新入生・新歓情報</a>
+      <a href="../plan/index.html"  class="hdr-btn hdr-btn-outline">活動計画</a>
+    </div>
+  </div>
+</header>
+
+<!-- IDENTITY STRIPE -->
+<div class="identity-stripe">
+  <a href="../member/index.html" class="stripe-nav-btn"><span class="stripe-en">MEMBERS</span><span class="stripe-jp">部員紹介</span></a>
+  <a href="../result/index.html"  class="stripe-nav-btn"><span class="stripe-en">RESULTS</span><span class="stripe-jp">試合結果</span></a>
+  <a href="../gallery/index.html" class="stripe-nav-btn"><span class="stripe-en">GALLERY</span><span class="stripe-jp">ギャラリー</span></a>
+  <a href="http://nuvc.bbs.fc2.com/" target="_blank" class="stripe-nav-btn"><span class="stripe-en">BULLETIN BOARD</span><span class="stripe-jp">掲示板</span></a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-title-jp">活動計画</div>
+    <div class="page-hero-title-en">SCHEDULE</div>
+    <div class="breadcrumb">
+      <a href="../index.html">ホーム</a><span>›</span>活動計画
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT + SIDEBAR -->
+<div class="content-wrap">
+
+  <!-- STICKY MONTH SIDEBAR -->
+  <nav class="month-sidebar" aria-label="月別ショートカット">
+    <!-- Men sidebar -->
+    <div class="sidebar-group active" id="sidebar-men">
+      <div class="sidebar-year">2026</div>
+      <button class="sidebar-link is-men" onclick="jumpTo('men-2605')">5月</button>
+      <button class="sidebar-link is-men" onclick="jumpTo('men-2604')">4月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-2603" onclick="jumpTo('men-2603')">3月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-2602" onclick="jumpTo('men-2602')">2月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-2601" onclick="jumpTo('men-2601')">1月</button>
+      <div class="sidebar-year">2025</div>
+      <button class="sidebar-link is-men folded-month" id="sl-men-12" onclick="jumpTo('men-12')">12月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-11" onclick="jumpTo('men-11')">11月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-10" onclick="jumpTo('men-10')">10月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-09" onclick="jumpTo('men-09')">9月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-08" onclick="jumpTo('men-08')">8月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-07" onclick="jumpTo('men-07')">7月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-06" onclick="jumpTo('men-06')">6月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-05" onclick="jumpTo('men-05')">5月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-04" onclick="jumpTo('men-04')">4月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-03" onclick="jumpTo('men-03')">3月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-02" onclick="jumpTo('men-02')">2月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-01" onclick="jumpTo('men-01')">1月</button>
+    </div>
+    <!-- Women sidebar -->
+    <div class="sidebar-group" id="sidebar-women">
+      <div class="sidebar-year">2025</div>
+      <button class="sidebar-link is-women" onclick="jumpTo('w-06')">6月</button>
+      <button class="sidebar-link is-women" onclick="jumpTo('w-05')">5月</button>
+      <button class="sidebar-link is-women folded-month" id="sl-w-04" onclick="jumpTo('w-04')">4月</button>
+      <button class="sidebar-link is-women folded-month" id="sl-w-02" onclick="jumpTo('w-02')">2月</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <div class="team-tabs">
+      <button class="team-tab team-tab-men"            id="tab-men"   onclick="switchTeam('men')">男子部</button>
+      <button class="team-tab team-tab-women inactive" id="tab-women" onclick="switchTeam('women')">女子部</button>
+    </div>
+
+    <!-- ════════════════ 男子部 ════════════════ -->
+    <div class="team-panel active" id="panel-men">
+      <p class="section-label">MEN'S TEAM · 2025</p>
+      <h2 class="section-title">男子部</h2>
+
+      <div class="month-block" id="men-2605">
+        <div class="month-header"><span class="month-tag month-tag-men">5月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202605m.jpg" alt="男子部 2026年5月 活動計画" /></div>
+      </div>
+
+      <div class="month-block" id="men-2604">
+        <div class="month-header"><span class="month-tag month-tag-men">4月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202604m.jpg" alt="男子部 2026年4月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-2603">
+        <div class="month-header"><span class="month-tag month-tag-men">3月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202603m.jpg" alt="男子部 2026年3月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-2602">
+        <div class="month-header"><span class="month-tag month-tag-men">2月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202602m.jpg" alt="男子部 2026年2月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-2601">
+        <div class="month-header"><span class="month-tag month-tag-men">1月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202601m.jpg" alt="男子部 2026年1月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-12">
+        <div class="month-header"><span class="month-tag month-tag-men">12月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202512m.jpg" alt="男子部 2025年12月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-11">
+        <div class="month-header"><span class="month-tag month-tag-men">11月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202511m.jpg" alt="男子部 2025年11月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-10">
+        <div class="month-header"><span class="month-tag month-tag-men">10月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202510m.jpg" alt="男子部 2025年10月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-09">
+        <div class="month-header"><span class="month-tag month-tag-men">9月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202509m.JPG" alt="男子部 2025年9月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-08">
+        <div class="month-header"><span class="month-tag month-tag-men">8月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202508m.JPG" alt="男子部 2025年8月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-07">
+        <div class="month-header"><span class="month-tag month-tag-men">7月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202507m.jpg" alt="男子部 2025年7月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-06">
+        <div class="month-header"><span class="month-tag month-tag-men">6月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20256m.jpg" alt="男子部 2025年6月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-05">
+        <div class="month-header"><span class="month-tag month-tag-men">5月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20255m.jpg" alt="男子部 2025年5月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-04">
+        <div class="month-header"><span class="month-tag month-tag-men">4月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20254m.jpg" alt="男子部 2025年4月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-03">
+        <div class="month-header"><span class="month-tag month-tag-men">3月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20253m.JPG" alt="男子部 2025年3月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-02">
+        <div class="month-header"><span class="month-tag month-tag-men">2月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20252m.JPG" alt="男子部 2025年2月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="men-01">
+        <div class="month-header"><span class="month-tag month-tag-men">1月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/20251m.JPG" alt="男子部 2025年1月 活動計画" /></div>
+      </div>
+
+      <div class="show-more-wrap">
+        <button class="show-more-btn show-more-btn-men" id="show-more-men" onclick="toggleMore('men')">
+          過去の予定を見る <i class="arrow">&#8964;</i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ════════════════ 女子部 ════════════════ -->
+    <div class="team-panel" id="panel-women">
+      <p class="section-label">WOMEN'S TEAM · 2025</p>
+      <h2 class="section-title">女子部</h2>
+
+      <div class="month-block" id="w-06">
+        <div class="month-header"><span class="month-tag month-tag-women">6月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/2025-6-plan.jpg" alt="女子部 2025年6月 活動計画" /></div>
+      </div>
+
+      <div class="month-block" id="w-05">
+        <div class="month-header"><span class="month-tag month-tag-women">5月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/2025-5-plan.jpg" alt="女子部 2025年5月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="w-04">
+        <div class="month-header"><span class="month-tag month-tag-women">4月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/2025-4-plan.jpg" alt="女子部 2025年4月 活動計画" /></div>
+      </div>
+
+      <div class="month-block folded" id="w-02">
+        <div class="month-header"><span class="month-tag month-tag-women">2月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202502w.png" alt="女子部 2025年2月 活動計画" /></div>
+      </div>
+
+      <div class="show-more-wrap">
+        <button class="show-more-btn show-more-btn-women" id="show-more-women" onclick="toggleMore('women')">
+          過去の予定を見る <i class="arrow">&#8964;</i>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+</div><!-- /content-wrap -->
+
+<script>
+  /* ── team switching ── */
+  function switchTeam(team) {
+    ['men', 'women'].forEach(function(t) {
+      document.getElementById('panel-' + t).classList.toggle('active', t === team);
+      document.getElementById('tab-' + t).classList.toggle('inactive', t !== team);
+      document.getElementById('sidebar-' + t).classList.toggle('active', t === team);
+    });
+  }
+
+  /* ── show/hide older months ── */
+  function toggleMore(team) {
+    var panel    = document.getElementById('panel-' + team);
+    var btn      = document.getElementById('show-more-' + team);
+    var expanded = btn.classList.contains('expanded');
+    var folded   = panel.querySelectorAll('.month-block.folded');
+
+    if (expanded) {
+      // collapse: re-hide folded blocks
+      folded.forEach(function(el) { el.style.display = ''; });
+      // restore sidebar dim
+      document.querySelectorAll('#sidebar-' + team + ' .folded-month').forEach(function(sl) {
+        sl.style.opacity = ''; sl.style.fontStyle = '';
+      });
+      btn.classList.remove('expanded');
+      btn.innerHTML = '過去の予定を見る <i class="arrow">&#8964;</i>';
+    } else {
+      // expand
+      folded.forEach(function(el) { el.style.display = 'block'; });
+      // undim sidebar folded links
+      document.querySelectorAll('#sidebar-' + team + ' .folded-month').forEach(function(sl) {
+        sl.style.opacity = '1'; sl.style.fontStyle = 'normal';
+      });
+      btn.classList.add('expanded');
+      btn.innerHTML = '折りたたむ <i class="arrow" style="transform:rotate(180deg)">&#8964;</i>';
+    }
+  }
+
+  /* ── sidebar jump ── */
+  function jumpTo(blockId) {
+    var block = document.getElementById(blockId);
+    if (!block) return;
+
+    // if this block is folded (currently hidden), expand its panel first
+    if (block.classList.contains('folded') && block.style.display !== 'block') {
+      var team = blockId.startsWith('w-') ? 'women' : 'men';
+      var btn  = document.getElementById('show-more-' + team);
+      if (!btn.classList.contains('expanded')) toggleMore(team);
+    }
+
+    // small delay so display:block takes effect before scrollIntoView
+    setTimeout(function() {
+      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 30);
+  }
+
+  /* ── highlight active sidebar link on scroll ── */
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var id  = entry.target.id;
+        var prefix = id.startsWith('w-') ? 'sidebar-women' : 'sidebar-men';
+        var sl  = document.querySelector('#' + prefix + ' [onclick="jumpTo(\'' + id + '\')"]');
+        if (!sl) return;
+        if (entry.isIntersecting) {
+          sl.classList.add('active-month');
+        } else {
+          sl.classList.remove('active-month');
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+    document.querySelectorAll('.month-block').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">NUVC</span>
+  <div class="footer-sub">名古屋大学体育会バレーボール部</div>
+  <div class="footer-divider"></div>
+  〒464-0814 愛知県名古屋市千種区不老町 名古屋大学<br>
+  <button class="tos-link" onclick="openTos()">利用規約</button><br><br>
+  <span style="font-size:0.72rem; color:rgba(255,255,255,0.3);">&copy; 名古屋大学バレーボール部 All Rights Reserved.</span>
+</footer>
+
+<!-- TOS MODAL -->
+<div id="tos-overlay" class="tos-overlay" onclick="closeTos()">
+  <div class="tos-modal" onclick="event.stopPropagation()">
+    <button class="tos-close" onclick="closeTos()" aria-label="閉じる">&times;</button>
+    <h2 class="tos-title">利用規約</h2>
+    <div class="tos-body">
+      <p class="tos-updated">最終更新日：2025年4月1日</p>
+
+      <h3>第1条（適用）</h3>
+      <p>本利用規約（以下「本規約」）は、名古屋大学体育会バレーボール部（以下「当部」）が運営するウェブサイト（以下「本サイト」）の利用条件を定めるものです。本サイトを閲覧・利用するすべての方（以下「利用者」）は、本規約に同意したものとみなします。</p>
+
+      <h3>第2条（知的財産権）</h3>
+      <p>本サイトに掲載されているテキスト・画像・映像・デザイン・ロゴ等のコンテンツの著作権は、当部または正当な権利を有する第三者に帰属します。利用者は、当部の事前の書面による許可なく、これらのコンテンツを複製・転載・改変・再配布することはできません。</p>
+
+      <h3>第3条（禁止事項）</h3>
+      <p>利用者は、本サイトの利用にあたり、以下の行為を行ってはなりません。</p>
+      <ul>
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当部または第三者の権利・利益を侵害する行為</li>
+        <li>本サイトのサーバーまたはネットワークに過大な負荷をかける行為</li>
+        <li>本サイトの運営を妨害するおそれのある行為</li>
+        <li>その他、当部が不適切と判断する行為</li>
+      </ul>
+
+      <h3>第4条（外部リンク）</h3>
+      <p>本サイトには外部サイトへのリンクが含まれる場合があります。当部はリンク先の内容・運営について一切の責任を負いません。外部サイトの利用は利用者自身の判断と責任において行ってください。</p>
+
+      <h3>第5条（免責事項）</h3>
+      <p>当部は、本サイトに掲載する情報の正確性・完全性・有用性について、可能な限り正確な情報を提供するよう努めますが、その内容を保証するものではありません。本サイトの利用により生じた損害について、当部は一切の責任を負いかねます。また、予告なく情報を変更・削除することがあります。</p>
+
+      <h3>第6条（プライバシー）</h3>
+      <p>当部は、本サイトを通じて取得した個人情報を、お問い合わせへの回答・活動案内の送付など必要な範囲でのみ利用し、法令に基づく場合を除き第三者に提供しません。本サイトはアクセス解析のためCookieを使用することがあります。</p>
+
+      <h3>第7条（写真・動画の掲載）</h3>
+      <p>本サイトに掲載する部員・関係者の写真・動画は、本人の同意を得た上で使用しています。掲載内容に関するご要望は、当部の公式SNSまたは顧問教員を通じてお問い合わせください。</p>
+
+      <h3>第8条（規約の変更）</h3>
+      <p>当部は、必要に応じて本規約を変更することがあります。変更後の規約は本サイトへの掲載をもって効力を生じるものとし、利用者はこれに同意したものとみなします。</p>
+
+      <h3>第9条（準拠法・管轄）</h3>
+      <p>本規約の解釈および適用は日本法に準拠するものとし、本サイトに関する紛争については名古屋地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+
+      <h3>お問い合わせ</h3>
+      <p>本規約に関するお問い合わせは、当部の公式SNSアカウントまたは顧問教員を通じてご連絡ください。</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.tos-link { background: none; border: none; color: rgba(255,255,255,0.45); font-size: 0.78rem; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+.tos-link:hover { color: rgba(255,255,255,0.8); }
+.tos-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9000; align-items: center; justify-content: center; padding: 20px; }
+.tos-overlay.open { display: flex; }
+.tos-modal { background: #fff; color: #222; border-radius: 10px; max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 40px 36px 36px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.tos-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #666; line-height: 1; }
+.tos-close:hover { color: #222; }
+.tos-title { font-size: 1.3rem; font-weight: 800; margin: 0 0 6px; color: #1a1a1a; }
+.tos-updated { font-size: 0.75rem; color: #888; margin: 0 0 24px; }
+.tos-body h3 { font-size: 0.9rem; font-weight: 700; color: #1a1a1a; margin: 20px 0 6px; }
+.tos-body p, .tos-body ul { font-size: 0.84rem; color: #444; line-height: 1.75; margin: 0 0 8px; }
+.tos-body ul { padding-left: 1.4em; }
+.tos-body li { margin-bottom: 4px; }
+</style>
+<script>
+function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTos(); });
+</script>
+
+</body>
+</html>
