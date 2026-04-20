@@ -90,12 +90,15 @@
   .photo-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
 
   /* ── LIGHTBOX ── */
-  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9000; align-items: center; justify-content: center; cursor: zoom-out; }
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9000; align-items: center; justify-content: center; }
   .lightbox.open { display: flex; }
-  .lightbox-img { max-width: 90vw; max-height: 85vh; min-width: 70vw; min-height: 50vh; object-fit: contain; border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6); cursor: default; }
-  .lightbox-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: rgba(255,255,255,0.65); font-size: 2.2rem; cursor: pointer; line-height: 1; padding: 4px 10px; transition: color 0.15s; }
-  .lightbox-close:hover { color: #fff; }
-  .lightbox-caption { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.55); font-size: 0.82rem; white-space: nowrap; letter-spacing: 0.04em; }
+  .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6); cursor: default; }
+  .lightbox-close { position: fixed; top: 16px; right: 20px; background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 1.8rem; line-height: 1; padding: 4px 12px; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+  .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-prev, .lightbox-next { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 1.8rem; padding: 12px 16px; border-radius: 4px; cursor: pointer; transition: background 0.18s; }
+  .lightbox-prev { left: 12px; } .lightbox-next { right: 12px; }
+  .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-caption { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.8rem; white-space: nowrap; letter-spacing: 0.04em; }
   .photo-card-label { padding: 10px 14px; font-size: 0.8rem; font-weight: 700; color: var(--text-mid); background: var(--white); }
 
   /* ── YEAR GROUP ── */
@@ -187,20 +190,52 @@
   <p class="section-label">RECENT</p>
   <h2 class="section-title">最近の写真</h2>
   <div class="photo-grid">
+    <div class="photo-card" onclick="openLightbox('recent/1.jpg', '活動写真')">
+      <img src="recent/1.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/1.1.jpg', '活動写真')">
+      <img src="recent/1.1.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/1.2.jpg', '活動写真')">
+      <img src="recent/1.2.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/2.jpg', '活動写真')">
+      <img src="recent/2.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/3.jpg', '活動写真')">
+      <img src="recent/3.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/4.jpg', '活動写真')">
+      <img src="recent/4.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/5.jpg', '活動写真')">
+      <img src="recent/5.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
+    <div class="photo-card" onclick="openLightbox('recent/6.jpg', '活動写真')">
+      <img src="recent/6.jpg" alt="活動写真" loading="lazy" />
+      <div class="photo-card-label">活動写真</div>
+    </div>
     <div class="photo-card" onclick="openLightbox('2024/2024harutokai.jpg', '2024年 春闘会')">
-      <img src="2024/2024harutokai.jpg" alt="2024年 春闘会" />
+      <img src="2024/2024harutokai.jpg" alt="2024年 春闘会" loading="lazy" />
       <div class="photo-card-label">2024年 春闘会</div>
     </div>
     <div class="photo-card" onclick="openLightbox('2022/2022nanadai.jpg', '2022年 七大戦')">
-      <img src="2022/2022nanadai.jpg" alt="2022年 七大戦" />
+      <img src="2022/2022nanadai.jpg" alt="2022年 七大戦" loading="lazy" />
       <div class="photo-card-label">2022年 七大戦</div>
     </div>
     <div class="photo-card" onclick="openLightbox('2022/2022oikon.jpg', '2022年 大会')">
-      <img src="2022/2022oikon.jpg" alt="2022年 大会" />
+      <img src="2022/2022oikon.jpg" alt="2022年 大会" loading="lazy" />
       <div class="photo-card-label">2022年 大会</div>
     </div>
     <div class="photo-card" onclick="openLightbox('2022/2022harutokai.jpg', '2022年 春闘会')">
-      <img src="2022/2022harutokai.jpg" alt="2022年 春闘会" />
+      <img src="2022/2022harutokai.jpg" alt="2022年 春闘会" loading="lazy" />
       <div class="photo-card-label">2022年 春闘会</div>
     </div>
   </div>
@@ -395,28 +430,59 @@
 <!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="閉じる">&times;</button>
+  <button class="lightbox-prev" onclick="lbNav(-1);event.stopPropagation()">&#8249;</button>
   <img id="lightbox-img" class="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+  <button class="lightbox-next" onclick="lbNav(1);event.stopPropagation()">&#8250;</button>
   <div id="lightbox-caption" class="lightbox-caption"></div>
 </div>
 
 <script>
-function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+var lbSrcs = [];
+var lbCaptions = [];
+var lbIdx = 0;
+
+function buildLbList() {
+  lbSrcs = []; lbCaptions = [];
+  document.querySelectorAll('.photo-card').forEach(function(card) {
+    var onclick = card.getAttribute('onclick');
+    var m = onclick.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
+    if (m) { lbSrcs.push(m[1]); lbCaptions.push(m[2]); }
+  });
+}
 
 function openLightbox(src, caption) {
-  var img = document.getElementById('lightbox-img');
-  img.src = src;
-  img.alt = caption;
-  document.getElementById('lightbox-caption').textContent = caption;
+  if (!lbSrcs.length) buildLbList();
+  lbIdx = lbSrcs.indexOf(src);
+  if (lbIdx < 0) lbIdx = 0;
+  showLb();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+function showLb() {
+  document.getElementById('lightbox-img').src = lbSrcs[lbIdx];
+  document.getElementById('lightbox-caption').textContent = lbCaptions[lbIdx] + '　' + (lbIdx + 1) + ' / ' + lbSrcs.length;
+}
+function lbNav(d) {
+  lbIdx = (lbIdx + d + lbSrcs.length) % lbSrcs.length;
+  showLb();
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+function openTos() { document.getElementById('tos-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTos() { document.getElementById('tos-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { closeLightbox(); closeTos(); }
+  var lb = document.getElementById('lightbox');
+  if (lb.classList.contains('open')) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  } else {
+    if (e.key === 'Escape') closeTos();
+  }
 });
 </script>
 
