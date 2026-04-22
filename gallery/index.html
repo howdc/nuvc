@@ -204,17 +204,7 @@
   <!-- ── RECENT (3 slots — replace src/label as needed) ── -->
   <p class="sec-label">RECENT</p>
   <h2 class="sec-title">最近の写真</h2>
-  <div class="recent-grid">
-    <div class="recent-card" onclick="openSingle('recent/1.jpg')">
-      <img src="recent/1.jpg" alt="活動写真" loading="lazy" />
-    </div>
-    <div class="recent-card" onclick="openSingle('recent/2.jpg')">
-      <img src="recent/2.jpg" alt="活動写真" loading="lazy" />
-    </div>
-    <div class="recent-card" onclick="openSingle('recent/3.jpg')">
-      <img src="recent/3.jpg" alt="活動写真" loading="lazy" />
-    </div>
-  </div>
+  <div class="recent-grid" id="recent-grid"></div>
 
   <!-- ── ALBUMS ── -->
   <p class="sec-label">ARCHIVE</p>
@@ -471,6 +461,22 @@ var albums = {
   a1996: { photos: ['1996/incolle8.1.jpg', '1996/incolle8.2.jpg', '1996/incolle8.3.jpg', '1996/incolle8.4.jpg', '1996/incolle8.5.jpg', '1996/incolle8.6.jpg'] },
   a1994: { photos: ['1994/H6withS.jpg'] }
 };
+
+/* ── Populate recent grid from most recent album ── */
+(function() {
+  var firstKey = Object.keys(albums)[0];
+  var photos = albums[firstKey].photos.slice(0, 3);
+  var grid = document.getElementById('recent-grid');
+  photos.forEach(function(src) {
+    var card = document.createElement('div');
+    card.className = 'recent-card';
+    card.onclick = function() { openSingle(src); };
+    var img = document.createElement('img');
+    img.src = src; img.alt = '活動写真'; img.loading = 'lazy';
+    card.appendChild(img);
+    grid.appendChild(card);
+  });
+})();
 
 var currentPhotos = [];
 var lbIdx = 0;
