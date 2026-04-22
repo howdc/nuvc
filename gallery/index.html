@@ -230,6 +230,30 @@
   <h2 class="sec-title">アルバム</h2>
   <div class="album-grid">
 
+    <!-- 2026 -->
+    <div class="album-card" onclick="openAlbum('a2026')">
+      <div class="album-cover-img" style="background-image:url('2026/spring1.jpg')"></div>
+      <div class="album-overlay">
+        <span class="album-year-tag">2026</span>
+        <div class="album-info-bottom">
+          <div class="album-title-text">長野合宿・春期東海リーグ</div>
+          <div class="album-photo-count">4枚</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="album-card" onclick="openAlbum('a2025')">
+      <div class="album-cover-img" style="background-image:url('2025/nanadai1.jpg')"></div>
+      <div class="album-overlay">
+        <span class="album-year-tag">2025</span>
+        <div class="album-info-bottom">
+          <div class="album-title-text">長野合宿・七大戦・リーグ戦・名阪戦</div>
+          <div class="album-photo-count">12枚</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 2024 -->
     <div class="album-card" onclick="openAlbum('a2024')">
       <div class="album-cover-img" style="background-image:url('2024/2024harutokai.jpg')"></div>
@@ -479,6 +503,8 @@
 <script>
 /* ── Album data ── */
 var albums = {
+  a2026: { photos: ['2026/camp1.jpg', '2026/spring1.jpg', '2026/spring2.jpg', '2026/spring3.jpg'] },
+  a2025: { photos: ['2025/nanadai1.jpg', '2025/nanadai2.jpg', '2025/nanadai3.jpg', '2025/nanadai4.jpg', '2025/nanadai5.jpg', '2025/camp1.jpg', '2025/spring1.jpg', '2025/spring2.jpg', '2025/spring3.jpg', '2025/meihan1.jpg', '2025/autumn1.jpg', '2025/insta1.jpg'] },
   a2024: { photos: ['2024/2024harutokai.jpg'] },
   a2022: { photos: ['2022/2022nanadai.jpg', '2022/2022oikon.jpg', '2022/2022harutokai.jpg'] },
   a2021: { photos: ['2021/2021harutokai.jpg'] },
