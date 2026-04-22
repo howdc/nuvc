@@ -86,7 +86,6 @@
   .recent-card { border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); background: var(--white); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
   .recent-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
   .recent-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
-  .recent-card-label { padding: 10px 14px; font-size: 0.8rem; font-weight: 700; color: var(--text-mid); }
 
   /* ── ALBUM GRID ── */
   .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
@@ -208,15 +207,12 @@
   <div class="recent-grid">
     <div class="recent-card" onclick="openSingle('recent/1.jpg')">
       <img src="recent/1.jpg" alt="活動写真" loading="lazy" />
-      <div class="recent-card-label">活動写真</div>
     </div>
     <div class="recent-card" onclick="openSingle('recent/2.jpg')">
       <img src="recent/2.jpg" alt="活動写真" loading="lazy" />
-      <div class="recent-card-label">活動写真</div>
     </div>
     <div class="recent-card" onclick="openSingle('recent/3.jpg')">
       <img src="recent/3.jpg" alt="活動写真" loading="lazy" />
-      <div class="recent-card-label">活動写真</div>
     </div>
   </div>
 
