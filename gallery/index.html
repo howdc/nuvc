@@ -120,11 +120,6 @@
   .album-title-text { font-size: 0.88rem; font-weight: 700; color: #fff; line-height: 1.3; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
   .album-photo-count { font-size: 0.68rem; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
 
-  /* Unavailable album */
-  .album-card.album-unavailable { cursor: default; pointer-events: none; }
-  .album-card.album-unavailable:hover { transform: none; box-shadow: var(--shadow-sm); }
-  .album-cover-placeholder { width: 100%; height: 100%; background: #2a3530; }
-  .album-unavail-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; padding: 2px 7px; margin-top: 2px; width: fit-content; }
 
   /* ── LIGHTBOX ── */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 9000; align-items: center; justify-content: center; }
@@ -325,42 +320,6 @@
         </div>
       </div>
     </a>
-
-    <!-- 2013 — no photos -->
-    <div class="album-card album-unavailable">
-      <div class="album-cover-placeholder"></div>
-      <div class="album-overlay">
-        <span class="album-year-tag">2013</span>
-        <div class="album-info-bottom">
-          <div class="album-title-text">名大カップ・新歓・卒業式</div>
-          <div class="album-unavail-badge">写真なし</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2012 — no photos -->
-    <div class="album-card album-unavailable">
-      <div class="album-cover-placeholder"></div>
-      <div class="album-overlay">
-        <span class="album-year-tag">2012</span>
-        <div class="album-info-bottom">
-          <div class="album-title-text">七大戦</div>
-          <div class="album-unavail-badge">写真なし</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2011 — no photos -->
-    <div class="album-card album-unavailable">
-      <div class="album-cover-placeholder"></div>
-      <div class="album-overlay">
-        <span class="album-year-tag">2011</span>
-        <div class="album-info-bottom">
-          <div class="album-title-text">春リーグ・七大戦・名阪戦</div>
-          <div class="album-unavail-badge">写真なし</div>
-        </div>
-      </div>
-    </div>
 
     <!-- 2001 -->
     <div class="album-card" onclick="openAlbum('a2001')">
