@@ -230,8 +230,9 @@
     <!-- Men sidebar -->
     <div class="sidebar-group active" id="sidebar-men">
       <div class="sidebar-year">2026</div>
+      <button class="sidebar-link is-men" onclick="jumpTo('men-2606')">6月</button>
       <button class="sidebar-link is-men" onclick="jumpTo('men-2605')">5月</button>
-      <button class="sidebar-link is-men" onclick="jumpTo('men-2604')">4月</button>
+      <button class="sidebar-link is-men folded-month" id="sl-men-2604" onclick="jumpTo('men-2604')">4月</button>
       <button class="sidebar-link is-men folded-month" id="sl-men-2603" onclick="jumpTo('men-2603')">3月</button>
       <button class="sidebar-link is-men folded-month" id="sl-men-2602" onclick="jumpTo('men-2602')">2月</button>
       <button class="sidebar-link is-men folded-month" id="sl-men-2601" onclick="jumpTo('men-2601')">1月</button>
@@ -272,12 +273,17 @@
       <p class="section-label">MEN'S TEAM · 2025</p>
       <h2 class="section-title">男子部</h2>
 
+      <div class="month-block" id="men-2606">
+        <div class="month-header"><span class="month-tag month-tag-men">6月</span><div class="month-rule"></div></div>
+        <div class="schedule-img-wrap"><img src="../images/202606m.jpg" alt="男子部 2026年6月 活動計画" /></div>
+      </div>
+
       <div class="month-block" id="men-2605">
         <div class="month-header"><span class="month-tag month-tag-men">5月</span><div class="month-rule"></div></div>
         <div class="schedule-img-wrap"><img src="../images/202605m.jpg" alt="男子部 2026年5月 活動計画" /></div>
       </div>
 
-      <div class="month-block" id="men-2604">
+      <div class="month-block folded" id="men-2604">
         <div class="month-header"><span class="month-tag month-tag-men">4月</span><div class="month-rule"></div></div>
         <div class="schedule-img-wrap"><img src="../images/202604m.jpg" alt="男子部 2026年4月 活動計画" /></div>
       </div>
