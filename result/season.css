@@ -1,0 +1,53 @@
+/* Season result pages (result/<year>/<season>.html) — loaded after assets/site.css */
+
+.back-link { display: inline-block; margin-bottom: 20px; font-size: 0.8rem; font-weight: 700; color: var(--green-mid); }
+.back-link:hover { color: var(--green-dark); }
+
+.result-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 40px; }
+.result-tab { padding: 8px 18px; border-radius: 2px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; color: var(--text-mid); background: var(--white); border: 1px solid var(--border); transition: background 0.18s, color 0.18s, border-color 0.18s; }
+.result-tab:hover { border-color: var(--green-mid); color: var(--green-dark); }
+.result-tab.active { background: var(--green-dark); border-color: var(--green-dark); color: var(--white); }
+
+/* summary: rank block + stats */
+.season-summary { display: grid; grid-template-columns: auto 1fr; overflow: hidden; margin-bottom: 28px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.ss-rank { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 150px; padding: 22px 28px; color: var(--white); background: repeating-linear-gradient(-48deg, transparent 0 18px, rgba(255,255,255,0.03) 18px 20px), linear-gradient(155deg, var(--ink), var(--green-dark)); border-right: 4px solid var(--burgundy); }
+.ss-rank-num { font-family: var(--font-en); font-style: italic; font-weight: 900; font-size: 4.2rem; line-height: 0.9; }
+.ss-rank-unit { font-size: 0.9rem; font-weight: 700; margin-top: 2px; }
+.ss-div { margin-top: 8px; padding: 2px 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--green-light); border: 1px solid rgba(116,198,157,0.4); border-radius: 100px; }
+.ss-stats { padding: 20px 26px; }
+.ss-league { font-size: 0.78rem; color: var(--text-light); margin-bottom: 12px; }
+.ss-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ss-grid dt { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-light); }
+.ss-grid dd { font-family: var(--font-en); font-weight: 700; font-size: 1.6rem; line-height: 1.2; color: var(--green-dark); }
+.ss-grid dd small { display: block; font-family: var(--font-jp); font-size: 0.7rem; font-weight: 500; color: var(--text-light); }
+
+/* match list */
+.table-wrap { overflow-x: auto; }
+.match-list { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); font-size: 0.9rem; }
+.match-list th { padding: 10px 16px; text-align: left; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; color: var(--white); background: var(--green-dark); white-space: nowrap; }
+.match-list td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.match-list tr:last-child td { border-bottom: none; }
+.match-list tr.is-win td:first-child { box-shadow: inset 4px 0 0 var(--green-mid); }
+.match-list tr.is-loss td:first-child { box-shadow: inset 4px 0 0 var(--burgundy-mid); }
+.m-no { width: 48px; font-family: var(--font-en); font-weight: 700; color: var(--text-light); }
+.m-opp { font-weight: 700; color: var(--text-dark); }
+.m-badge { display: inline-block; padding: 2px 12px; border-radius: 2px; font-size: 0.76rem; font-weight: 700; }
+.is-win  .m-badge { background: var(--green-pale); color: var(--green-dark); }
+.is-loss .m-badge { background: var(--burgundy-pale); color: var(--burgundy); }
+.m-score { font-family: var(--font-en); font-weight: 900; font-size: 1.25rem; color: var(--text-dark); }
+.m-score span { margin: 0 4px; color: var(--text-light); font-weight: 700; }
+.m-sets-detail { font-size: 0.8rem; color: var(--text-mid); }
+.source-note { margin-top: 12px; font-size: 0.74rem; color: var(--text-light); }
+
+@media (max-width: 640px) {
+  .season-summary { grid-template-columns: 1fr; }
+  .ss-rank { flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 6px; min-width: 0; padding: 16px 20px; border-right: none; border-bottom: 4px solid var(--burgundy); }
+  .ss-rank-num { font-size: 3rem; }
+  .ss-div { margin: 0 0 0 auto; align-self: center; }
+  .ss-stats { padding: 16px 20px; }
+  .ss-grid { grid-template-columns: repeat(2, 1fr); }
+  .match-list { font-size: 0.82rem; }
+  .match-list th, .match-list td { padding: 10px; }
+  .m-no { width: 28px; }
+  .m-sets-detail { white-space: normal; min-width: 110px; font-size: 0.74rem; }
+}
