@@ -51,3 +51,41 @@
   .m-no { width: 28px; }
   .m-sets-detail { white-space: normal; min-width: 110px; font-size: 0.74rem; }
 }
+
+/* ── Converted legacy pages (result/<year>/result<year>.html, 1989–2012) ── */
+.result-tabs a.result-tab { scroll-margin-top: 90px; }
+.old-sec { margin-bottom: 56px; scroll-margin-top: calc(var(--header-h) + 16px); }
+.old-sec-title { position: relative; font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 900; color: var(--green-dark); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.old-sec-title::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 48px; height: 3px; background: linear-gradient(90deg, var(--burgundy) 0 70%, var(--green-mid) 70% 100%); }
+.content-body { font-size: 0.86rem; color: var(--text-mid); line-height: 1.8; overflow-wrap: anywhere; }
+.content-body h3 { display: flex; align-items: center; gap: 10px; margin: 26px 0 10px; font-size: 1.02rem; font-weight: 900; color: var(--green-dark); }
+.content-body h3::before { content: ''; width: 4px; height: 1.1em; background: var(--green-mid); flex-shrink: 0; }
+.content-body h4 { margin: 18px 0 8px; font-size: 0.92rem; font-weight: 700; color: var(--text-dark); }
+.content-body p { margin-bottom: 10px; }
+.content-body .table-wrap { margin: 10px 0 24px; overflow-x: auto; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+table.match-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+table.match-table th, table.match-table td { white-space: nowrap; padding: 7px 8px; border: 1px solid var(--border); text-align: center; vertical-align: middle; }
+table.match-table tr.hdr th { background: var(--green-dark); color: var(--white); font-weight: 700; white-space: nowrap; }
+table.match-table.women-table tr.hdr th { background: var(--burgundy); }
+table.match-table td.win-cell  { color: #1a6b3e; font-weight: 700; }
+table.match-table td.loss-cell { color: var(--burgundy); font-weight: 700; }
+table.match-table td.self-cell { background: #eef0ee; color: #999; }
+
+/* event blocks: men | women columns of match cards */
+.events { display: flex; flex-direction: column; gap: 18px; }
+.ev { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 16px 20px 18px; }
+.ev h3 { margin: 0 0 2px; }
+.ev-meta { font-size: 0.76rem; color: var(--text-light); margin: 0 0 8px !important; }
+.ev-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px 24px; margin-top: 8px; }
+.ev-col h4 { margin: 0 0 6px; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--green-mid); }
+.ev-women h4 { color: var(--burgundy-mid); }
+.ev-note { margin: 8px 0 4px !important; font-size: 0.78rem; font-weight: 700; color: var(--text-dark); }
+.ev-result { margin: 6px 0 0 !important; font-size: 0.8rem; font-weight: 900; color: var(--green-dark); text-align: right; }
+.ev-women .ev-result { color: var(--burgundy); }
+.mc { display: grid; grid-template-columns: auto auto 1fr; align-items: baseline; gap: 2px 10px; padding: 6px 10px; margin-bottom: 4px; border-radius: 3px; background: var(--off-white); border-left: 3px solid var(--border); }
+.mc-win  { border-left-color: var(--green-mid); }
+.mc-loss { border-left-color: var(--burgundy-mid); }
+.mc-us { font-size: 0.74rem; color: var(--text-light); }
+.mc-score { font-family: var(--font-en); font-weight: 900; font-size: 1.05rem; color: var(--text-dark); }
+.mc-opp { font-weight: 700; color: var(--text-dark); }
+.mc-sets { grid-column: 1 / -1; font-size: 0.72rem; color: var(--text-light); }

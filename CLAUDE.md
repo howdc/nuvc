@@ -11,6 +11,10 @@ Static website for the Nagoya University Volleyball Club (NUVC), hosted on GitHu
 - `index.html` — Main page (entry point)
 - `plan/index.html` — Activity schedule (男子/女子 tabs, sticky sidebar, folded months)
 - `result/index.html` — Match results by year
+  - `result/1989–2012/result<year>.html` — one page per year, converted from the old Shift_JIS frameset pages (league tables + `.ev`/`.mc` match cards)
+  - `result/2013–2022/*.html` — per-tournament pages with `.result-tabs`
+  - `result/2023+/spring.html`, `autumn.html` — men's Tokai league, Nagoya-only match list
+  - `result/season.css` — shared styles for all year/season pages
 - `member/index.html` — Club member roster
 - `gallery/index.html` — Photo gallery by year
 - `other/index.html` — Other info (club rules, links)
