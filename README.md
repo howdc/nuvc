@@ -118,6 +118,8 @@ GitHub Pages で公開している静的サイトです。HTML / CSS / JavaScrip
 | `other/index.html` | その他（部の規則・リンクなど） |
 | `shinkan/` | 新歓ページ（男子 / 女子） |
 | `images/` | 予定表画像・写真・アイコン |
+| `assets/site.css` | 全ページ共通のデザイン（色・ヘッダー・フッターなど） |
+| `assets/site.js` | 全ページ共通の機能（利用規約の表示・メールコピーなど）。利用規約の文章もここにあります |
 
 デザインや構造の詳細は `CLAUDE.md` に記載しています（Claude Code などの AI ツールを使う場合にも参照されます）。
 
