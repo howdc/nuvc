@@ -56,8 +56,12 @@
   .pos-tag-op { background: rgba(92,42,42,0.1); color: var(--burgundy); }
   .pos-tag-s { background: rgba(196,147,42,0.12); color: #7a5c10; }
   .pos-tag-l { background: rgba(107,125,114,0.1); color: var(--text-mid); }
+  .member-tags { display: flex; gap: 4px; margin-bottom: 7px; }
+  .member-tags .pos-tag { margin-bottom: 0; }
+  .captain-tag { display: inline-block; padding: 2px 7px; border-radius: 2px; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; background: var(--burgundy); color: var(--white); }
   .member-name { font-weight: 700; font-size: 0.92rem; color: var(--text-dark); line-height: 1.3; }
   .member-reading { font-size: 0.62rem; color: var(--text-light); margin: 2px 0 5px; letter-spacing: 0.02em; }
+  .member-school { font-size: 0.6rem; color: var(--text-light); margin: -7px 0 10px; }
   .member-dept { font-size: 0.6rem; color: var(--text-light); margin-bottom: 10px; }
   .dept-women { color: var(--burgundy); }
   .member-stats { display: flex; border-top: 1px solid var(--border); padding-top: 8px; margin-top: auto; }
@@ -132,10 +136,11 @@
       <button class="sidebar-link active-grade" onclick="jumpTo('m-p-4')">4年生</button>
       <button class="sidebar-link" onclick="jumpTo('m-p-3')">3年生</button>
       <button class="sidebar-link" onclick="jumpTo('m-p-2')">2年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-p-1')">1年生</button>
       <div class="sidebar-section-label">マネージャー</div>
-      <button class="sidebar-link" onclick="jumpTo('m-mgr-4')">4年生</button>
       <button class="sidebar-link" onclick="jumpTo('m-mgr-3')">3年生</button>
       <button class="sidebar-link" onclick="jumpTo('m-mgr-2')">2年生</button>
+      <button class="sidebar-link" onclick="jumpTo('m-mgr-1')">1年生</button>
     </div>
     <!-- Women sidebar (hidden until tab switch) -->
     <div id="sidebar-women" style="display:none">
@@ -186,56 +191,13 @@
       <div class="year-block" id="m-p-4">
         <span class="year-label year-label-men">4年生</span>
         <div class="member-grid">
-          <div class="member-card pc-op">
-            <div class="member-num">5</div>
-            <span class="pos-tag pos-tag-op">OP</span>
-            <div class="member-name">塚原 明生</div>
-            <div class="member-reading">つかはら あきみ</div>
-            <div class="member-dept">工学部</div>
-            <div class="member-stats">
-              <div class="member-stat"><div class="stat-val">173</div><div class="stat-lbl">身長 cm</div></div>
-              <div class="member-stat"><div class="stat-val">310</div><div class="stat-lbl">到達点 cm</div></div>
-            </div>
-          </div>
-          <div class="member-card pc-mb">
-            <div class="member-num">11</div>
-            <span class="pos-tag pos-tag-mb">MB</span>
-            <div class="member-name">髙林 人和</div>
-            <div class="member-reading">たかばやし とわ</div>
-            <div class="member-dept">経済学部</div>
-            <div class="member-stats">
-              <div class="member-stat"><div class="stat-val">171</div><div class="stat-lbl">身長 cm</div></div>
-              <div class="member-stat"><div class="stat-val">305</div><div class="stat-lbl">到達点 cm</div></div>
-            </div>
-          </div>
-          <div class="member-card pc-oh">
-            <div class="member-num">12</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
-            <div class="member-name">渡会 晄大</div>
-            <div class="member-reading">わたらい こうた</div>
-            <div class="member-dept">工学部</div>
-            <div class="member-stats">
-              <div class="member-stat"><div class="stat-val">173</div><div class="stat-lbl">身長 cm</div></div>
-              <div class="member-stat"><div class="stat-val">305</div><div class="stat-lbl">到達点 cm</div></div>
-            </div>
-          </div>
-          <div class="member-card pc-oh">
-            <div class="member-num">13</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
-            <div class="member-name">平野 匡輝</div>
-            <div class="member-reading">ひらの まさき</div>
-            <div class="member-dept">法学部</div>
-            <div class="member-stats">
-              <div class="member-stat"><div class="stat-val">174</div><div class="stat-lbl">身長 cm</div></div>
-              <div class="member-stat"><div class="stat-val">305</div><div class="stat-lbl">到達点 cm</div></div>
-            </div>
-          </div>
           <div class="member-card pc-mb">
             <div class="member-num">17</div>
-            <span class="pos-tag pos-tag-mb">MB</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
             <div class="member-name">酒匂 大志</div>
             <div class="member-reading">さこう たいし</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：向陽</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">183</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">325</div><div class="stat-lbl">到達点 cm</div></div>
@@ -243,12 +205,14 @@
           </div>
           <div class="member-card pc-l">
             <div class="member-num">18</div>
-            <span class="pos-tag pos-tag-l">L</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
             <div class="member-name">河原 圭</div>
             <div class="member-reading">かわはら けい</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：沼津東</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">165</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">270</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
         </div>
@@ -259,21 +223,23 @@
         <div class="member-grid">
           <div class="member-card pc-oh">
             <div class="member-num">2</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span><span class="captain-tag">主将</span></div>
             <div class="member-name">市川 敦士</div>
             <div class="member-reading">いちかわ あつし</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：旭丘</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">172</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">315</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
-          <div class="member-card pc-oh">
+          <div class="member-card pc-op">
             <div class="member-num">3</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-op">OP</span></div>
             <div class="member-name">西田 周太</div>
             <div class="member-reading">にしだ しゅうた</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：甲南</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">173</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">305</div><div class="stat-lbl">到達点 cm</div></div>
@@ -281,21 +247,35 @@
           </div>
           <div class="member-card pc-s">
             <div class="member-num">4</div>
-            <span class="pos-tag pos-tag-s">S</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-s">S</span></div>
             <div class="member-name">賀山 大星</div>
             <div class="member-reading">かやま たいせい</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：向陽</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">167</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">290</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
           <div class="member-card pc-mb">
+            <div class="member-num">14</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
+            <div class="member-name">邱 子元</div>
+            <div class="member-reading">チョウ　ツユアン</div>
+            <div class="member-dept">理学部</div>
+            <div class="member-school">出身：SSIS</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">184</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">330</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-mb">
             <div class="member-num">15</div>
-            <span class="pos-tag pos-tag-mb">MB</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
             <div class="member-name">武井 洸生</div>
             <div class="member-reading">たけい こうき</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：青山</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">176</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">300</div><div class="stat-lbl">到達点 cm</div></div>
@@ -303,23 +283,14 @@
           </div>
           <div class="member-card pc-l">
             <div class="member-num">16</div>
-            <span class="pos-tag pos-tag-l">L</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
             <div class="member-name">畑佐 美久斗</div>
             <div class="member-reading">はたさ みくと</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：美濃加茂</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">165</div><div class="stat-lbl">身長 cm</div></div>
-            </div>
-          </div>
-          <div class="member-card pc-mb">
-            <div class="member-num">14</div>
-            <span class="pos-tag pos-tag-mb">MB</span>
-            <div class="member-name">邱 子元</div>
-            <div class="member-reading">チョウ　ツユアン</div>
-            <div class="member-dept">理学部</div>
-            <div class="member-stats">
-              <div class="member-stat"><div class="stat-val">184</div><div class="stat-lbl">身長 cm</div></div>
-              <div class="member-stat"><div class="stat-val">330</div><div class="stat-lbl">到達点 cm</div></div>
+              <div class="member-stat"><div class="stat-val">270</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
         </div>
@@ -330,10 +301,11 @@
         <div class="member-grid">
           <div class="member-card pc-op">
             <div class="member-num">1</div>
-            <span class="pos-tag pos-tag-op">OP</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-op">OP</span></div>
             <div class="member-name">森 智哉</div>
             <div class="member-reading">もり ともや</div>
             <div class="member-dept">法学部</div>
+            <div class="member-school">出身：瑞陵</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">180</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">310</div><div class="stat-lbl">到達点 cm</div></div>
@@ -341,20 +313,23 @@
           </div>
           <div class="member-card pc-l">
             <div class="member-num">6</div>
-            <span class="pos-tag pos-tag-l">L</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
             <div class="member-name">大羽 雄介</div>
             <div class="member-reading">おおば ゆうすけ</div>
             <div class="member-dept">理学部</div>
+            <div class="member-school">出身：時習館</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">162</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">280</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
           <div class="member-card pc-mb">
             <div class="member-num">8</div>
-            <span class="pos-tag pos-tag-mb">MB</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
             <div class="member-name">横山 朝陽</div>
             <div class="member-reading">よこやま あさひ</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：大教附属</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">181</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">300</div><div class="stat-lbl">到達点 cm</div></div>
@@ -362,10 +337,11 @@
           </div>
           <div class="member-card pc-s">
             <div class="member-num">10</div>
-            <span class="pos-tag pos-tag-s">S</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-s">S</span></div>
             <div class="member-name">松尾 友生</div>
             <div class="member-reading">まつお ともき</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：長崎西</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">177</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">300</div><div class="stat-lbl">到達点 cm</div></div>
@@ -373,10 +349,11 @@
           </div>
           <div class="member-card pc-op">
             <div class="member-num">20</div>
-            <span class="pos-tag pos-tag-op">OP</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-op">OP</span></div>
             <div class="member-name">加納 光裕</div>
             <div class="member-reading">かのう みつひろ</div>
             <div class="member-dept">法学部</div>
+            <div class="member-school">出身：関</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">178</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">310</div><div class="stat-lbl">到達点 cm</div></div>
@@ -384,20 +361,23 @@
           </div>
           <div class="member-card pc-l">
             <div class="member-num">22</div>
-            <span class="pos-tag pos-tag-l">L</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
             <div class="member-name">西牟田 康太</div>
             <div class="member-reading">にしむた こうた</div>
             <div class="member-dept">情報学部</div>
+            <div class="member-school">出身：佐賀西</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">165</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">275</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
           <div class="member-card pc-oh">
             <div class="member-num">24</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span></div>
             <div class="member-name">渡辺 賢人</div>
             <div class="member-reading">わたなべ けんと</div>
             <div class="member-dept">情報学部</div>
+            <div class="member-school">出身：岡崎北</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">173</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">297</div><div class="stat-lbl">到達点 cm</div></div>
@@ -405,13 +385,141 @@
           </div>
           <div class="member-card pc-oh">
             <div class="member-num">26</div>
-            <span class="pos-tag pos-tag-oh">OH</span>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span></div>
             <div class="member-name">佐藤 隼斗</div>
             <div class="member-reading">さとう はやと</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：岡崎北</div>
             <div class="member-stats">
               <div class="member-stat"><div class="stat-val">183</div><div class="stat-lbl">身長 cm</div></div>
               <div class="member-stat"><div class="stat-val">310</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-p-1">
+        <span class="year-label year-label-men">1年生</span>
+        <div class="member-grid">
+          <div class="member-card pc-oh">
+            <div class="member-num">5</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span></div>
+            <div class="member-name">住田 悠汰</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：菊里</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">173</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">310</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-oh">
+            <div class="member-num">7</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span></div>
+            <div class="member-name">浦瀬 春翔</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：岐阜北</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">179</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">320</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-s">
+            <div class="member-num">9</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-s">S</span></div>
+            <div class="member-name">河原崎 空</div>
+            <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：掛川東</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">167</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">290</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-l">
+            <div class="member-num">21</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
+            <div class="member-name">盛田 竜之介</div>
+            <div class="member-dept">情報学部</div>
+            <div class="member-school">出身：明和</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">162</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">270</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-mb">
+            <div class="member-num">23</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
+            <div class="member-name">山下 裕輝</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：四日市</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">180</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">320</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-op">
+            <div class="member-num">25</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-op">OP</span></div>
+            <div class="member-name">桝田 佳依</div>
+            <div class="member-dept">農学部</div>
+            <div class="member-school">出身：大教附属</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">181</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">320</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-op">
+            <div class="member-num">28</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-op">OP</span></div>
+            <div class="member-name">風岡 太郎</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：瑞陵</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">172</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">305</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-mb">
+            <div class="member-num">30</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
+            <div class="member-name">寺岡 和来</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：金沢泉丘</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">197</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">330</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-mb">
+            <div class="member-num">33</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-mb">MB</span></div>
+            <div class="member-name">冨田 耀太</div>
+            <div class="member-dept">工学部</div>
+            <div class="member-school">出身：金沢泉丘</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">180</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">315</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-l">
+            <div class="member-num">64</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-l">L</span></div>
+            <div class="member-name">大橋 海翔</div>
+            <div class="member-dept">理学部</div>
+            <div class="member-school">出身：岡崎北</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">169</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">290</div><div class="stat-lbl">到達点 cm</div></div>
+            </div>
+          </div>
+          <div class="member-card pc-oh">
+            <div class="member-num">99</div>
+            <div class="member-tags"><span class="pos-tag pos-tag-oh">OH</span></div>
+            <div class="member-name">片岡 悠空</div>
+            <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：静岡市立</div>
+            <div class="member-stats">
+              <div class="member-stat"><div class="stat-val">170</div><div class="stat-lbl">身長 cm</div></div>
+              <div class="member-stat"><div class="stat-val">320</div><div class="stat-lbl">到達点 cm</div></div>
             </div>
           </div>
         </div>
@@ -428,17 +536,6 @@
         </div>
       </div>
 
-      <div class="year-block" id="m-mgr-4">
-        <span class="year-label year-label-men">4年生</span>
-        <div class="member-grid">
-          <div class="member-card">
-            <div class="member-name">小川 璃子</div>
-            <div class="member-reading">おがわ りこ</div>
-            <div class="member-dept">医学部</div>
-          </div>
-        </div>
-      </div>
-
       <div class="year-block" id="m-mgr-3">
         <span class="year-label year-label-men">3年生</span>
         <div class="member-grid">
@@ -446,11 +543,13 @@
             <div class="member-name">大池 萌佳</div>
             <div class="member-reading">おおいけ もえか</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：滝</div>
           </div>
           <div class="member-card">
             <div class="member-name">鈴木 悠愛</div>
             <div class="member-reading">すずき ゆあ</div>
             <div class="member-dept">工学部</div>
+            <div class="member-school">出身：刈谷</div>
           </div>
         </div>
       </div>
@@ -462,16 +561,35 @@
             <div class="member-name">本田 遥</div>
             <div class="member-reading">ほんだ はるか</div>
             <div class="member-dept">農学部</div>
+            <div class="member-school">出身：八代</div>
           </div>
           <div class="member-card">
             <div class="member-name">安立 有杏</div>
             <div class="member-reading">あだち ゆあん</div>
             <div class="member-dept">経済学部</div>
+            <div class="member-school">出身：豊橋東</div>
           </div>
           <div class="member-card">
             <div class="member-name">末竹 みちる</div>
             <div class="member-reading">すえたけ みちる</div>
             <div class="member-dept">医学部</div>
+            <div class="member-school">出身：可児</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-block" id="m-mgr-1">
+        <span class="year-label year-label-men">1年生</span>
+        <div class="member-grid">
+          <div class="member-card">
+            <div class="member-name">西木 彩実</div>
+            <div class="member-dept">医学部</div>
+            <div class="member-school">出身：浜松西</div>
+          </div>
+          <div class="member-card">
+            <div class="member-name">太田 舞</div>
+            <div class="member-dept">法学部</div>
+            <div class="member-school">出身：向陽</div>
           </div>
         </div>
       </div>
@@ -601,8 +719,8 @@ function jumpTo(blockId) {
 /* ── Sidebar highlight on scroll ── */
 (function() {
   var allBlocks = [
-    { id: 'm-p-4', team: 'men' }, { id: 'm-p-3', team: 'men' }, { id: 'm-p-2', team: 'men' },
-    { id: 'm-mgr-4', team: 'men' }, { id: 'm-mgr-3', team: 'men' }, { id: 'm-mgr-2', team: 'men' },
+    { id: 'm-p-4', team: 'men' }, { id: 'm-p-3', team: 'men' }, { id: 'm-p-2', team: 'men' }, { id: 'm-p-1', team: 'men' },
+    { id: 'm-mgr-3', team: 'men' }, { id: 'm-mgr-2', team: 'men' }, { id: 'm-mgr-1', team: 'men' },
     { id: 'w-p-4', team: 'women' }, { id: 'w-p-3', team: 'women' },
     { id: 'w-p-2', team: 'women' }, { id: 'w-p-1', team: 'women' },
     { id: 'w-mgr-4', team: 'women' }, { id: 'w-mgr-1', team: 'women' }
